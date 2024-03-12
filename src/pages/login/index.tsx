@@ -33,6 +33,7 @@ const Login = () => {
   const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [canLogin,setCanLogin] = useState<boolean>(false);
+  console.log(password);
   useEffect(() => {
     setCanLogin(isCanLogin(id,password));
   },[id,password])

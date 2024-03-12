@@ -13,6 +13,7 @@ export const InputWrap = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
+  position: relative;
 `
 export const InputImage = styled.img`
   width: 20px;
@@ -29,4 +30,23 @@ export const TextInput = styled.input`
   letter-spacing: 0em;
   text-align: left;
   color: #344054;
+  z-index:2;
+  &::-ms-reveal,
+  &::-ms-clear {
+    display: none;
+  }
 `;
+export const PassWordShowButton = styled.div`
+  height:24px;
+  text-align: center;
+  font-family: SF Pro Display;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  color: #191919;
+  right: 0;
+  position: absolute;
+  z-index:3;
+  cursor:pointer;
+`
