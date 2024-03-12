@@ -65,12 +65,28 @@ export const LoginButton = styled.div`
   color: #ffffff;
   cursor: pointer;
   margin-top: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2E90FA;
+`;
+
+export const LoginDisable = styled.div`
+  width: 320px;
+  padding: 10px 0;
+  border-radius: 30px;
+  ${Font}
+  font-weight:600;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 10px;
   background: #b2ddff;
   display: flex;
   align-items: center;
   justify-content: center;
-`;
 
+`;
 export const Logo = styled.img`
   width: 217px;
   height: 80px;
