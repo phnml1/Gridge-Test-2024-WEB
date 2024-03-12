@@ -1,14 +1,13 @@
 import styled, { css } from "styled-components";
 import { supportDeviceSize } from "../../components/styles";
-
+import iphones from "../../assets/Iphones-background.png";
 export const LoginRoot = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 1440px;
   height: 1024px;
-  background-color: #fff;
-
+  background: #f6f6f6;
   // @media all and (max-width: ${supportDeviceSize}px) {
   //   width: 100vw;
   // }
@@ -32,6 +31,8 @@ export const Wrap = styled.div`
 export const IphonesWrap = styled.div`
   width: 520px;
   height: 100%;
+  background-image: url(${iphones});
+  background-size: 100%;
 `;
 
 export const LoginWrap = styled.div`
@@ -41,6 +42,7 @@ export const LoginWrap = styled.div`
   justify-content: flex-start;
   width: 416px;
   height: 100%;
+  gap: 10px;
 `;
 export const LoginBox = styled.div`
   display: flex;
@@ -51,6 +53,7 @@ export const LoginBox = styled.div`
   height: calc(559px - 1.6px);
   border: 1px solid #cccccc;
   position: relative;
+  background: #ffffff;
 `;
 export const LoginButton = styled.div`
   width: 320px;
@@ -83,13 +86,13 @@ export const InputWrap = styled.div`
   top: 207px;
 `;
 export const Or = styled.div`
-width: 14px;
-height: 24px;
-${Font}
-font-size:16px;
-color: #7F7F7F;
-display:flex;
-align-itmes: center;
+  width: 14px;
+  height: 24px;
+  ${Font}
+  font-size:16px;
+  color: #7f7f7f;
+  display: flex;
+  align-itmes: center;
 `;
 export const KakaoButton = styled.button`
   width: 100%;
@@ -114,8 +117,38 @@ export const ForgetPassword = styled.div`
   letter-spacing: 0em;
   text-align: center;
   margin-top: 20px;
-  height:20px;
+  height: 20px;
   color: #7f7f7f;
   margin-bottom: 40px;
-  cursor:pointer;
+  cursor: pointer;
+`;
+export const JoinBox = styled.div`
+  width: calc(100% - 1.6px);
+  height: calc(86px - 1.6px);
+  border: 1px solid #cccccc;
+  ${Font}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  background: #ffffff;
+  color: #7f7f7f;
+  gap: 4px;
+`;
+export const JoinButton = styled.div`
+  color: #2e90fa;
+  cursor: pointer;
+`;
+export const AppGuideMessage = styled.div`
+  //styleName: Text md/Medium;
+  ${Font}
+  font-weight: 500;
+  text-align: center;
+  margin-top: 10px;
+  color: #7f7f7f;
+`;
+export const AppDownLoad = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 `;

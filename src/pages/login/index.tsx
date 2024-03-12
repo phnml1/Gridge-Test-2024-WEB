@@ -1,11 +1,30 @@
 import React from "react";
 // import { useNavigate } from "react-router-dom";
-import { InputWrap,IphonesWrap, LoginButton, LoginRoot, LoginWrap, Logo, Wrap, KakaoButton, LoginBox, Or, ForgetPassword } from "./styles";
-import LogoImage from '../../assets/inobel-logo.png'
-import Input from '../../components/Input';
-import mail from '../../assets/mail.png';
-import lock from '../../assets/lock.png';
-import kakaologo from '../../assets/kakaologo.png';
+import {
+  InputWrap,
+  IphonesWrap,
+  LoginButton,
+  LoginRoot,
+  LoginWrap,
+  Logo,
+  Wrap,
+  KakaoButton,
+  LoginBox,
+  Or,
+  ForgetPassword,
+  JoinBox,
+  JoinButton,
+  AppGuideMessage,
+  AppDownLoad,
+} from "./styles";
+import LogoImage from "../../assets/inobel-logo.png";
+import Input from "../../components/Input";
+import mail from "../../assets/mail.png";
+import lock from "../../assets/lock.png";
+import kakaologo from "../../assets/kakaologo.png";
+import playStore from '../../assets/play-store-button.png';
+import appStore from '../../assets/app-store-button.png';
+
 // import { useRecoilState } from "recoil";
 // import { jwtState, nameState } from "../../recoil/login";
 const Login = () => {
@@ -43,31 +62,37 @@ const Login = () => {
     <LoginRoot>
       <Wrap>
         <IphonesWrap>
-
+          
         </IphonesWrap>
         <LoginWrap>
           <LoginBox>
-            <Logo src={LogoImage} alt="logo image"/>
+            <Logo src={LogoImage} alt="logo image" />
             <InputWrap>
-            <Input image={mail} placeholder="전화번호,사용자 이름 또는 이메일"/>
-            <Input image = {lock} placeholder="비밀번호"/>
-            <LoginButton>
-              로그인
-              </LoginButton>
-              <Or>
-                or
-              </Or>
+              <Input
+                image={mail}
+                placeholder="전화번호,사용자 이름 또는 이메일"
+              />
+              <Input image={lock} placeholder="비밀번호" />
+              <LoginButton>로그인</LoginButton>
+              <Or>or</Or>
               <KakaoButton>
-                <img src={kakaologo} width={22} height={22} alt="카카오 버튼"/>
+                <img src={kakaologo} width={22} height={22} alt="카카오 버튼" />
                 카카오 로그인
               </KakaoButton>
-              <ForgetPassword>
-              비밀번호를 잊으셨나요?
-            </ForgetPassword>
+              <ForgetPassword>비밀번호를 잊으셨나요?</ForgetPassword>
             </InputWrap>
-            
           </LoginBox>
-        
+          <JoinBox>
+            계정이 없으신가요? 
+            <JoinButton>가입하기</JoinButton>
+          </JoinBox>
+          <AppGuideMessage>
+            앱을 다운로드 하세요.
+          </AppGuideMessage>
+          <AppDownLoad>
+          <img src = {playStore} alt="플레이스토어 버튼" width={135} height={40}/>
+          <img src = {appStore} alt = "앱스토어 버튼" width={120} height={40}/>
+          </AppDownLoad>
         </LoginWrap>
       </Wrap>
     </LoginRoot>
