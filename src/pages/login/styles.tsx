@@ -47,8 +47,8 @@ export const LoginBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
-  height: 559px;
+  width: calc(100% - 1.6px);
+  height: calc(559px - 1.6px);
   border: 1px solid #cccccc;
   position: relative;
 `;
