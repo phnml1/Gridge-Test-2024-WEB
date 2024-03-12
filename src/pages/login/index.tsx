@@ -39,7 +39,30 @@ const Login = () => {
   // const navigate = useNavigate();
   // const [name, setName] = useRecoilState(nameState);
   // const [, setJwt] = useRecoilState(jwtState);
-
+    // 로그인 버튼 클릭
+    const handleLogin = async () => {
+      console.log('클릭')
+      // try {
+      //   if (Object.keys(name).length === 0) {
+      //     alert("이름을 입력해 주세요.");
+      //     return;
+      //   }
+  
+      //   //서버통신 코드 작성
+  
+      //   setJwt("success login");
+  
+      //   navigate(`/`);
+      // } catch (error) {
+      //   alert("네트워크 통신 실패. 잠시후 다시 시도해주세요.");
+      // }
+    };
+    const onKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
+      const key = event.key || event.keyCode;
+      if (canLogin && (key === "Enter" || key === 13)) {
+        handleLogin().then();
+      }
+    };
   
 
 
@@ -64,6 +87,7 @@ const Login = () => {
                 type="password"
                 value={password}
                 setValue={setPassword}
+                onKeyUp={onKeyUp}
               />
               {
                 canLogin?(
