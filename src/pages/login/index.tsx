@@ -20,7 +20,7 @@ import {
   LoginError,
 } from "./styles";
 import LogoImage from "../../assets/inobel-logo.png";
-import Input from "../../components/Input";
+import LoginInput from "../../components/Input/login";
 import mail from "../../assets/mail.png";
 import lock from "../../assets/lock.png";
 import playStore from "../../assets/play-store-button.png";
@@ -86,14 +86,14 @@ const Login = () => {
           <LoginBox>
             <Logo src={LogoImage} alt="logo image" />
             <InputWrap>
-              <Input
+              <LoginInput
                 image={mail}
                 placeholder="전화번호,사용자 이름 또는 이메일"
                 type="text"
                 value={id}
                 setValue={setId}
               />
-              <Input
+              <LoginInput
                 image={lock}
                 placeholder="비밀번호"
                 type="password"
