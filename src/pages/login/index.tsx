@@ -27,8 +27,10 @@ import playStore from "../../assets/play-store-button.png";
 import appStore from "../../assets/app-store-button.png";
 import { isCanLogin } from "../../utils/utility";
 
-// import { useRecoilState } from "recoil";
-// import { jwtState, nameState } from "../../recoil/login";
+import { useRecoilState } from "recoil";
+import { jwtState, nameState } from "../../recoil/login";
+import axios from 'axios';
+
 const Login = () => {
   const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -38,25 +40,30 @@ const Login = () => {
     setCanLogin(isCanLogin(id,password));
   },[id,password])
   // const navigate = useNavigate();
-  // const [name, setName] = useRecoilState(nameState);
-  // const [, setJwt] = useRecoilState(jwtState);
+  const [, setName] = useRecoilState(nameState);
+  const [, setJwt] = useRecoilState(jwtState);
     // 로그인 버튼 클릭
     const handleLogin = async () => {
-      console.log('클릭')
-      // try {
-      //   if (Object.keys(name).length === 0) {
-      //     alert("이름을 입력해 주세요.");
-      //     return;
-      //   }
+      try {
+        if (id.length === 0) {
+          alert("이름을 입력해 주세요.");
+          return;
+        }
+        if (password.length < 6) {
+          alert('비밀번호는 6자리 이상을 입력해야 합니다.')
+        }
   
-      //   //서버통신 코드 작성
-  
-      //   setJwt("success login");
-  
-      //   navigate(`/`);
-      // } catch (error) {
-      //   alert("네트워크 통신 실패. 잠시후 다시 시도해주세요.");
-      // }
+       const response =  await axios.post(`https://api-sns.gridge-test.com/auth/sign-in`,{
+        "loginId":`${id}`,
+        "password": `${password}`,
+      })
+        console.log(response);
+        setJwt("success login");
+        setName(id);
+        // navigate(`/`);
+      } catch (error) {
+        console.log(error);
+      }
     };
     const onKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
       const key = event.key || event.keyCode;
@@ -92,7 +99,7 @@ const Login = () => {
               />
               {
                 canLogin?(
-              <LoginButton onClick={()=>{console.log('클릭')}}>로그인</LoginButton>
+              <LoginButton onClick={handleLogin}>로그인</LoginButton>
                 ): (<LoginDisable>로그인</LoginDisable>)
               }
               <Or>or</Or>
