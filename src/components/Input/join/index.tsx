@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {Wrap,
   InputImage,
   TextInput,
-  InputWrap,PassWordShowButton,} from '../styles';
+  InputWrap,PassWordShowButton} from '../styles';
 
 interface LoginInputsProps {
   image: string;
@@ -10,9 +10,9 @@ interface LoginInputsProps {
   type: string;
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-  onKeyUp?: (event: React.KeyboardEvent<HTMLElement>) => void;
+  // onKeyUp?: (event: React.KeyboardEvent<HTMLElement>) => void;
 }
-const LoginInput = (props: LoginInputsProps) => {
+const JoinInput = (props: LoginInputsProps) => {
   // Input 에서 엔터키 누를 경우
   const [showPassword, setShowPassWord] = useState<Boolean>(
     props.type == "text" ? true : false
@@ -24,7 +24,7 @@ const LoginInput = (props: LoginInputsProps) => {
         <TextInput
           type={showPassword ? "text" : "password"}
           maxLength={20}
-          onKeyUp={props.onKeyUp}
+          // onKeyUp={props.onKeyUp}
           onChange={(e) => {
             props.setValue(e.target.value);
           }}
@@ -53,4 +53,4 @@ const LoginInput = (props: LoginInputsProps) => {
   );
 };
 
-export default LoginInput;
+export default JoinInput;
