@@ -8,7 +8,6 @@ import {
   LoginWrap,
   Logo,
   Wrap,
-  KakaoButton,
   LoginBox,
   Or,
   ForgetPassword,
@@ -24,7 +23,6 @@ import LogoImage from "../../assets/inobel-logo.png";
 import Input from "../../components/Input";
 import mail from "../../assets/mail.png";
 import lock from "../../assets/lock.png";
-import kakaologo from "../../assets/kakaologo.png";
 import playStore from "../../assets/play-store-button.png";
 import appStore from "../../assets/app-store-button.png";
 import { isCanLogin } from "../../utils/utility";
@@ -33,6 +31,7 @@ import { useRecoilState } from "recoil";
 import { jwtState, nameState } from "../../recoil/login";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import KakaoButton from "../../components/Buttons/KakaoButton";
 
 const Login = () => {
   const [id, setId] = useState<string>("");
@@ -108,10 +107,7 @@ const Login = () => {
                 ): (<LoginDisable>로그인</LoginDisable>)
               }
               <Or>or</Or>
-              <KakaoButton>
-                <img src={kakaologo} width={22} height={22} alt="카카오 버튼" />
-                카카오 로그인
-              </KakaoButton>
+              <KakaoButton/>
               <LoginErrorWrap>
                 {(loginsuccess.length>=1) && (
                 <LoginError>{loginsuccess}</LoginError>
