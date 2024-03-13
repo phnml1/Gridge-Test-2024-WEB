@@ -17,6 +17,8 @@ import {
   AppGuideMessage,
   AppDownLoad,
   LoginDisable,
+  LoginErrorWrap,
+  LoginError,
 } from "./styles";
 import LogoImage from "../../assets/inobel-logo.png";
 import Input from "../../components/Input";
@@ -30,16 +32,18 @@ import { isCanLogin } from "../../utils/utility";
 import { useRecoilState } from "recoil";
 import { jwtState, nameState } from "../../recoil/login";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [canLogin,setCanLogin] = useState<boolean>(false);
-  console.log(password);
+  const [loginsuccess,setloginSuccess] = useState<string>('');
+  const navigate = useNavigate();
   useEffect(() => {
     setCanLogin(isCanLogin(id,password));
+    setloginSuccess('');
   },[id,password])
-  // const navigate = useNavigate();
   const [, setName] = useRecoilState(nameState);
   const [, setJwt] = useRecoilState(jwtState);
     // 로그인 버튼 클릭
@@ -53,16 +57,17 @@ const Login = () => {
           alert('비밀번호는 6자리 이상을 입력해야 합니다.')
         }
   
-       const response =  await axios.post(`https://api-sns.gridge-test.com/auth/sign-in`,{
+       const response = await axios.post(`${process.env.REACT_APP_API}/auth/sign-in`,{
         "loginId":`${id}`,
         "password": `${password}`,
       })
-        console.log(response);
-        setJwt("success login");
-        setName(id);
-        // navigate(`/`);
+        setJwt(response.data.result.jwt);
+        setName(response.data.result.id);
+        window.localStorage.setItem('jwt',response.data.result.jwt)
+        navigate(`/`);
       } catch (error) {
-        console.log(error);
+        setloginSuccess('아이디나 비밀번호가 틀렸습니다.')
+       
       }
     };
     const onKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -107,11 +112,18 @@ const Login = () => {
                 <img src={kakaologo} width={22} height={22} alt="카카오 버튼" />
                 카카오 로그인
               </KakaoButton>
-              <ForgetPassword>비밀번호를 잊으셨나요?</ForgetPassword>
+              <LoginErrorWrap>
+                {(loginsuccess.length>=1) && (
+                <LoginError>{loginsuccess}</LoginError>
+                )
+                }
+                <ForgetPassword>비밀번호를 잊으셨나요?</ForgetPassword>
+                </LoginErrorWrap>
             </InputWrap>
           </LoginBox>
           <JoinBox>
             계정이 없으신가요?
+
             <JoinButton>가입하기</JoinButton>
           </JoinBox>
           <AppGuideMessage>앱을 다운로드 하세요.</AppGuideMessage>

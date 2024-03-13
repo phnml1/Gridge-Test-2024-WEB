@@ -8,9 +8,9 @@ export const LoginRoot = styled.div`
   width: 1440px;
   height: 1024px;
   background: #f6f6f6;
-  // @media all and (max-width: ${supportDeviceSize}px) {
-  //   width: 100vw;
-  // }
+  @media all and (max-width: ${supportDeviceSize}px) {
+    width: 100vw;
+  }
 `;
 
 export const Font = css`
@@ -24,13 +24,13 @@ export const Wrap = styled.div`
   align-items: center;
   justify-content: center;
   width: auto;
-  height: 780px;
+  height: auto;
   gap: 72px;
 `;
 
 export const IphonesWrap = styled.div`
   width: 520px;
-  height: 100%;
+  height: 780px;
   background-image: url(${iphones});
   background-size: 100%;
 `;
@@ -41,7 +41,7 @@ export const LoginWrap = styled.div`
   align-items: center;
   justify-content: flex-start;
   width: 416px;
-  height: 100%;
+  height: auto;
   gap: 10px;
 `;
 export const LoginBox = styled.div`
@@ -50,7 +50,7 @@ export const LoginBox = styled.div`
   align-items: center;
   justify-content: flex-start;
   width: calc(100% - 1.6px);
-  height: calc(559px - 1.6px);
+  height: calc(auto - 1.6px);
   border: 1px solid #cccccc;
   position: relative;
   background: #ffffff;
@@ -69,7 +69,7 @@ export const LoginButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #2E90FA;
+  background: #2e90fa;
 `;
 
 export const LoginDisable = styled.div`
@@ -85,7 +85,6 @@ export const LoginDisable = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
 `;
 export const Logo = styled.img`
   width: 217px;
@@ -98,8 +97,7 @@ export const InputWrap = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  position: absolute;
-  top: 207px;
+  margin-top: 57px;
 `;
 export const Or = styled.div`
   width: 14px;
@@ -125,6 +123,23 @@ export const KakaoButton = styled.button`
   ${Font}
   font-weight: 600;
 `;
+export const LoginErrorWrap = styled.div`
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+export const LoginError = styled.div`
+  font-family: SF Pro Display;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #F04438;
+
+`;
 export const ForgetPassword = styled.div`
   font-family: SF Pro Display;
   font-size: 14px;
@@ -132,10 +147,9 @@ export const ForgetPassword = styled.div`
   line-height: 20px;
   letter-spacing: 0em;
   text-align: center;
-  margin-top: 20px;
+
   height: 20px;
   color: #7f7f7f;
-  margin-bottom: 40px;
   cursor: pointer;
 `;
 export const JoinBox = styled.div`
