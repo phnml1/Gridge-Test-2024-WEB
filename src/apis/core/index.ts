@@ -14,14 +14,26 @@ const request: AxiosInstance = axios.create({
 });
 
 request.interceptors.request.use(
-  (config) => {
+  async (config) => {
     const jwt = window.localStorage.getItem(JWT_KEY) ?? "";
     const decodedJwt: JwtPayload = jsonwebtoken.decode(jwt) as JwtPayload;
     const currentTime = new Date().getTime() / 1000;
 
     if (decodedJwt.exp ?? 0 < currentTime) {
-      // 서버에 토큰 재발급 요청 코드 작성 필요
-      console.log("서버에 토큰 재발급 요청");
+      try {
+        // Send token refresh request to the server
+        const response = await axios.post(
+          `${process.env.REACT_APP_API}/auth/jwt`,
+          {
+            jwt: jwt,
+          }
+        );
+        const newToken = response.data.result.jwt; // assuming the new token is returned in the response
+        // Update localStorage with the new token
+        window.localStorage.setItem(JWT_KEY, newToken);
+      } catch (error) {
+        console.error("토큰을 갱신하는 동안 오류가 발생했습니다.", error);
+      }
     }
     return config;
   },
