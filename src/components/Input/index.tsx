@@ -33,7 +33,7 @@ const Input = (props: InputProps) => {
           }}
           placeholder={props.placeholder}
         />
-        {props.type == "password" &&
+        {props.type == "password" && props.value.length >= 1 &&
           (showPassword ? (
             <PassWordShowButton
               onClick={() => {
