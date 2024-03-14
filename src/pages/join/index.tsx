@@ -12,6 +12,7 @@ import playStore from "../../assets/play-store-button.png";
 import appStore from "../../assets/app-store-button.png";
 import JoinInputBox from "../../components/Join/JoinInputBox";
 import { userInfo } from "../../types/types";
+import BirthInputBox from "../../components/Join/BirthInputBox";
 
 
 const Join = () => {
@@ -22,12 +23,13 @@ const Join = () => {
     "phone": "",
     "birthDate": ""
   });
-  console.log(userInfo);
+  const [boxTheme,setBoxTheme] = useState<string>('join');
   return (
     <JoinRoot>
       <JoinWrap>
         <JoinBox>
-          <JoinInputBox setUserInfo = {setUserInfo}/>
+          {(boxTheme==='join') && (<JoinInputBox userInfo = {userInfo} setUserInfo = {setUserInfo} setBoxTheme={setBoxTheme}/>)}
+          {(boxTheme==='birth') && (<BirthInputBox userInfo = {userInfo} setUserInfo = {setUserInfo} setBoxTheme={setBoxTheme}/>)}
         </JoinBox>
         <LoginBox>
           계정이 있으신가요?

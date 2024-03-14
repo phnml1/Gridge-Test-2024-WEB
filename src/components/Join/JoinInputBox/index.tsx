@@ -18,8 +18,9 @@ import request from "../../../apis/core";
 import React from "react";
 import { userInfo } from "../../../types/types";
 interface JoinInputBoxProps {
+  userInfo: userInfo;
   setUserInfo: React.Dispatch<React.SetStateAction<userInfo>>;
-
+  setBoxTheme: React.Dispatch<React.SetStateAction<string>>;
 }
 const JoinInputBox =  (props:JoinInputBoxProps) => {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
@@ -31,6 +32,13 @@ const JoinInputBox =  (props:JoinInputBoxProps) => {
   const [clicked,setClicked] = useState<boolean>(false);
   const [isExistId, setIsExistId] = useState<boolean>(false);
   const [,setValidate] = useState<boolean>(false);
+  useEffect(() => {
+    setId(props.userInfo.loginId);
+    setPassword(props.userInfo.password);
+    setName(props.userInfo.realName);
+    setPhoneNumber(props.userInfo.phone);
+  },[])
+  console.log(password,id);
   useEffect(() => {
     setAble(activateJoinButton(phoneNumber, name, id, password));
     setClicked(false);
@@ -66,6 +74,7 @@ const JoinInputBox =  (props:JoinInputBoxProps) => {
       setErrorMessage('');
       props.setUserInfo(prevState => ({...prevState,loginId:id,password:password,realName:name,phone:phoneNumber,}))
       setValidate(true);
+      props.setBoxTheme('birth');
     }
   },[clicked])
   return (
@@ -110,7 +119,7 @@ const JoinInputBox =  (props:JoinInputBoxProps) => {
             />
             <JoinButtonWrap>
               {(errorMessage!=='' && clicked)&&(<ErrorMessage>{errorMessage}</ErrorMessage>)}
-              <JoinButton onClick = {() => {setClicked(true)}} able={able}>가입</JoinButton>
+              {able? (<JoinButton onClick = {() => {setClicked(true)}} able={able}>가입</JoinButton>):(<JoinButton able={able}>가입</JoinButton>)}
             </JoinButtonWrap>
           </InputWrap>
           </Fragment>

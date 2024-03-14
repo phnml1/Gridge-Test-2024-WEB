@@ -50,6 +50,27 @@ export const isCanLogin = (id:string,password:string) => {
   }
   return false;
 }
+export const years: number[] = [];
+for (let year = 2021; year >= 1919; year--) {
+  years.push(year);
+}
+
+// 월 배열: 1부터 12까지
+export const months: number[] = Array.from({ length: 12 }, (_, index) => index + 1);
+
+// 일 배열: 1부터 31까지
+export const days: number[] = Array.from({ length: 31 }, (_, index) => index + 1);
+
+export const changeBirthtoNumber = (birth:string) => {
+  const bitrharr = birth.split('-');
+  return bitrharr;
+}
+export const isValidBirth = (year: number, month: number, day: number) => {
+  if ((1919 <= year && year <= 2015) && (1 <= month && month <= 12) && (1 <= day && day <= 31)) {
+    return true;
+  }
+  return false;
+}
 
 /*export const saveLoginInfo = (loginInfo: UserInfo) => {
   window.localStorage.setItem(

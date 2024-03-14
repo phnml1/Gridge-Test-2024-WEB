@@ -34,6 +34,7 @@ export const JoinBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 `;
 
 export const LoginBox = styled.div`

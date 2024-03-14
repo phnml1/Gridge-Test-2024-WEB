@@ -55,8 +55,8 @@ text-align: center;
 color: #F04438;
 
 `;
-export const JoinButton = styled.div<{ able: boolean }>`
-  width: 100%;
+export const JoinButton = styled.div<{able: boolean }>`
+  width: 320px;
   padding: 10px 0;
   border-radius: 30px;
   font-family: SF Pro Display;

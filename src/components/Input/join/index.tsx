@@ -49,6 +49,7 @@ const JoinInput = (props: LoginInputsProps) => {
             props.setValue(e.target.value);
           }}
           placeholder={props.placeholder}
+          value={props.value}
         />
         
         
