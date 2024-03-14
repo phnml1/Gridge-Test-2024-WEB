@@ -7,6 +7,7 @@ export const Wrap = styled.div<{ width: string }>`
   width: calc(${(props) => (props.width ? props.width : "100%")} - 29.6px);
   padding: 13px 14px;
   margin:0;
+  position:relative;
 `;
 export const InputWrap = styled.div`
   height:24px;

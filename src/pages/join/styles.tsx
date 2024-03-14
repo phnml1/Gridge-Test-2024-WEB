@@ -69,8 +69,24 @@ export const Or = styled.div`
   display: flex;
   align-itmes: center;
 `;
-export const JoinButton = styled.div<{ able: boolean }>`
+
+export const JoinButtonWrap = styled.div`
   width: 320px;
+  margin-bottom: 40px;
+`;
+export const ErrorMessage = styled.div`
+  width:100%;
+  font-family: SF Pro Display;
+font-size: 16px;
+font-weight: 600;
+line-height: 19px;
+letter-spacing: 0em;
+text-align: center;
+color: #F04438;
+
+`;
+export const JoinButton = styled.div<{ able: boolean }>`
+  width: 100%;
   padding: 10px 0;
   border-radius: 30px;
   font-family: SF Pro Display;
@@ -87,7 +103,7 @@ export const JoinButton = styled.div<{ able: boolean }>`
   justify-content: center;
   background: ${(props) => (props.able ? "#2e90fa;" : "#B2DDFF")};
   margin-bottom: 39px;
-  `;
+`;
 export const LoginBox = styled.div`
   width: calc(416px - 1.6px);
   height: calc(86px - 1.6px);

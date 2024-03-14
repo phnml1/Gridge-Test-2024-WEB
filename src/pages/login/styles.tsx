@@ -49,8 +49,9 @@ export const LoginBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: calc(100% - 1.6px);
-  height: calc(auto - 1.6px);
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
   border: 1px solid #cccccc;
   position: relative;
   background: #ffffff;
@@ -108,21 +109,6 @@ export const Or = styled.div`
   display: flex;
   align-itmes: center;
 `;
-export const KakaoButton = styled.button`
-  width: 100%;
-  border-radius: 30px;
-  text-align: center;
-  cursor: pointer;
-  background: #f8d706;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  gap: 2px;
-  ${Font}
-  font-weight: 600;
-`;
 export const LoginErrorWrap = styled.div`
   margin-top: 20px;
   margin-bottom: 40px;
@@ -153,8 +139,9 @@ export const ForgetPassword = styled.div`
   cursor: pointer;
 `;
 export const JoinBox = styled.div`
-  width: calc(100% - 1.6px);
-  height: calc(86px - 1.6px);
+  width: 100%;
+  height: 86px;
+  box-sizing: border-box;
   border: 1px solid #cccccc;
   ${Font}
   display: flex;
@@ -176,6 +163,7 @@ export const AppGuideMessage = styled.div`
   text-align: center;
   margin-top: 10px;
   color: #7f7f7f;
+  margin-left: 4.5px;
 `;
 export const AppDownLoad = styled.div`
   display: flex;
