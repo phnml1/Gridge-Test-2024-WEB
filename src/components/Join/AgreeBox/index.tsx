@@ -11,7 +11,6 @@ interface AgreeBoxProps {
   join: () => Promise<void>
 }
 const AgreeBox = (props:AgreeBoxProps) => {
-  console.log(props)
   const [agree,setAgree] = useState<boolean[]>([false,false,false]);
   const agreeMessages = ['이용약관 (필수)','데이터 정책 (필수)','위치 기반 기능 (필수)'];
   function isAllAgree(): boolean {

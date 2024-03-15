@@ -6,21 +6,21 @@ import {
   AddBirth,
   BirthOptionsWrap,
   Cake,
-  GoBack,
   Guide,
+  JoinButtonWrap,
   NotOpenProfile,
   WhyInputBirth,
 } from "./styles";
 import BirthOptionBox from "./components/BirthOptionBox";
-import { changeBirthtoNumber, days, isValidBirth, months, years } from "../../../utils/utility";
-import { JoinButton } from "./styles";
+import { addZeroIfNeeded, changeBirthtoNumber, days, isValidBirth, months, years } from "../../../utils/utility";
+import { JoinButton, GoBack } from "../styles";
 interface JoinInputBoxProps {
   userInfo: userInfo;
   setUserInfo: React.Dispatch<React.SetStateAction<userInfo>>;
   setBoxTheme: React.Dispatch<React.SetStateAction<string>>;
 }
 const BirthInputBox = (props: JoinInputBoxProps) => {
-  console.log(props.userInfo);
+
   const [year, setYear] = useState(0);
   const [month, setMonth] = useState(0);
   const [day, setDay] = useState(0);
@@ -28,7 +28,7 @@ const BirthInputBox = (props: JoinInputBoxProps) => {
   useEffect(() => {
     const birthDate = props.userInfo.birthDate
     const formattedDate = changeBirthtoNumber(birthDate)
-    console.log(formattedDate);
+
     if(birthDate!==''){
       setYear(Number(formattedDate[0]));
       setMonth(Number(formattedDate[1]));
@@ -36,9 +36,8 @@ const BirthInputBox = (props: JoinInputBoxProps) => {
     }
   },[])
   useEffect(() => {
-    console.log(year,month,day);
     if(isValidBirth(year,month,day)) {
-      props.setUserInfo((prev) => ({...prev, birthDate:`${year}-${month}-${day}`}));
+      props.setUserInfo((prev) => ({...prev, birthDate:`${year}-${addZeroIfNeeded(month)}-${addZeroIfNeeded(day)}`}));
       setValid(true);
     }
     else {
@@ -74,8 +73,10 @@ const BirthInputBox = (props: JoinInputBoxProps) => {
         ></BirthOptionBox>
       </BirthOptionsWrap>
       {!valid && (<Guide>태어난 날짜를 입력해야합니다</Guide>)}
-      {valid? (<JoinButton onClick={()=>{props.setBoxTheme('')}}  able={valid}>가입</JoinButton>):(<JoinButton able={valid}>가입</JoinButton>)}
+      <JoinButtonWrap>
+      {valid? (<JoinButton onClick={()=>{props.setBoxTheme('agree')}}  able={valid}>가입</JoinButton>):(<JoinButton able={valid}>가입</JoinButton>)}
       <GoBack onClick={()=>{props.setBoxTheme('join')}}>돌아가기</GoBack>
+      </JoinButtonWrap>
     </Fragment>
   );
 };

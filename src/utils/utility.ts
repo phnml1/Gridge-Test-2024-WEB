@@ -9,7 +9,7 @@ export const isValidEmail = (email: string) => {
 };
 
 export const isValidPhoneNumber = (phoneNumber: string) => {
-  const formattedNumber = phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+  const formattedNumber = formatPhoneNumber(phoneNumber);
   const phoneNumberRegex = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
 
   if (phoneNumberRegex.test(formattedNumber)){
@@ -18,12 +18,25 @@ export const isValidPhoneNumber = (phoneNumber: string) => {
   return false;
 };
 
+export const formatPhoneNumber = (phoneNumber:string) => {
+  return phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+}
+
+export const addZeroIfNeeded = (number:number) => {
+  // 입력된 숫자가 한 자리 수인지 확인
+  const isSingleDigit = number < 10;
+
+  // 한 자리 수일 경우 0을 붙이고, 아닐 경우 그대로 반환
+  return isSingleDigit ? `0${number}` : `${number}`;
+}
 export const activateJoinButton = (id:string,name:string,nickname:string,password:string) => {
   if (id.length>=1 && name.length>=1 && nickname.length>=1 && password.length>=6) {
     return true
   }
   return false;
 }
+
+
 export const isValidPhoneOrEmail =  (input: string) => {
   return isValidPhoneNumber(input) && isValidEmail(input);
 }

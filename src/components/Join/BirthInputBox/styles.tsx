@@ -39,6 +39,14 @@ export const Guide = styled.div`
   color:#7F7F7F;
   ${TextSmRegular}
 `;
+export const JoinButtonWrap = styled.div`
+margin-top: 60px;
+display: flex;
+  align-items: center;
+  flex-direction:column;
+  margin-bottom:40px;
+  gap:10px;
+`
 export const JoinButton = styled.div<{ able: boolean }>`
   width: 320px;
   padding: 10px 0;
@@ -51,7 +59,7 @@ export const JoinButton = styled.div<{ able: boolean }>`
   text-align: center;
   color: #ffffff;
   ${(props) => (props.able ? "cursor: pointer;" : "")}
-  margin-top: 60px;
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,9 +67,8 @@ export const JoinButton = styled.div<{ able: boolean }>`
 `;
 
 export const GoBack = styled.div`
-  margin-top:10px;
   color: #2E90FA;
   ${TextMdSemibold};
-  margin-bottom:40px;
+
   cursor:pointer;
 `

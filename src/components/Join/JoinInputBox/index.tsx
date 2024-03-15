@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react"
-import { ErrorMessage, InputWrap, JoinButton, JoinButtonWrap, Logo, Or, ShareImage } from "./styles"
+import { ErrorMessage, InputWrap, JoinButtonWrap, Logo, Or, ShareImage } from "./styles"
 import KakaoButton from "../../Buttons/KakaoButton"
 import JoinInput from "../../Input/join";
 import LogoImage from "../../../assets/inobel-logo.png";
@@ -9,6 +9,7 @@ import user from "../../../assets/user.png";
 import settings from "../../../assets/settings.png";
 import {
   activateJoinButton,
+  formatPhoneNumber,
   isValidId,
   isValidName,
   isValidPassword,
@@ -17,6 +18,7 @@ import {
 import request from "../../../apis/core";
 import React from "react";
 import { userInfo } from "../../../types/types";
+import { JoinButton } from "../styles";
 interface JoinInputBoxProps {
   userInfo: userInfo;
   setUserInfo: React.Dispatch<React.SetStateAction<userInfo>>;
@@ -38,7 +40,6 @@ const JoinInputBox =  (props:JoinInputBoxProps) => {
     setName(props.userInfo.realName);
     setPhoneNumber(props.userInfo.phone);
   },[])
-  console.log(password,id);
   useEffect(() => {
     setAble(activateJoinButton(phoneNumber, name, id, password));
     setClicked(false);
@@ -72,7 +73,7 @@ const JoinInputBox =  (props:JoinInputBoxProps) => {
     }
     else {
       setErrorMessage('');
-      props.setUserInfo(prevState => ({...prevState,loginId:id,password:password,realName:name,phone:phoneNumber,}))
+      props.setUserInfo(prevState => ({...prevState,loginId:id,password:password,realName:name,phone:formatPhoneNumber(phoneNumber),}))
       setValidate(true);
       props.setBoxTheme('birth');
     }

@@ -13,6 +13,9 @@ import appStore from "../../assets/app-store-button.png";
 import JoinInputBox from "../../components/Join/JoinInputBox";
 import { userInfo } from "../../types/types";
 import BirthInputBox from "../../components/Join/BirthInputBox";
+import AgreeBox from "../../components/Join/AgreeBox";
+import request from "../../apis/core";
+import { useNavigate } from "react-router-dom";
 
 
 const Join = () => {
@@ -24,12 +27,23 @@ const Join = () => {
     "birthDate": ""
   });
   const [boxTheme,setBoxTheme] = useState<string>('join');
+  const navigate = useNavigate();
+   const join = async () => {
+    try {
+      await request.post('/auth/sign-up',userInfo);
+      navigate('/login');
+    }
+    catch(error) {
+      alert('회원가입에 실패하였습니다.');
+    }
+  }
   return (
     <JoinRoot>
       <JoinWrap>
         <JoinBox>
           {(boxTheme==='join') && (<JoinInputBox userInfo = {userInfo} setUserInfo = {setUserInfo} setBoxTheme={setBoxTheme}/>)}
           {(boxTheme==='birth') && (<BirthInputBox userInfo = {userInfo} setUserInfo = {setUserInfo} setBoxTheme={setBoxTheme}/>)}
+          {(boxTheme==='agree') && (<AgreeBox join = {join} setBoxTheme = {setBoxTheme} userInfo={userInfo}/>)}
         </JoinBox>
         <LoginBox>
           계정이 있으신가요?

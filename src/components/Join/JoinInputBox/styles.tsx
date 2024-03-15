@@ -42,7 +42,11 @@ export const Or = styled.div`
 
 export const JoinButtonWrap = styled.div`
   width: 320px;
-  margin-bottom: 40px;
+  margin-bottom: 39px;
+  display:flex;
+  align-items: center;
+  gap:10px;
+  margin-top:10px;
 `;
 export const ErrorMessage = styled.div`
   width:100%;
@@ -54,23 +58,4 @@ letter-spacing: 0em;
 text-align: center;
 color: #F04438;
 
-`;
-export const JoinButton = styled.div<{able: boolean }>`
-  width: 320px;
-  padding: 10px 0;
-  border-radius: 30px;
-  font-family: SF Pro Display;
-  line-height: 24px;
-  letter-spacing: 0em;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  color: #ffffff;
-  ${(props) => (props.able ? "cursor: pointer;" : "")}
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: ${(props) => (props.able ? "#2e90fa;" : "#B2DDFF")};
-  margin-bottom: 39px;
 `;
