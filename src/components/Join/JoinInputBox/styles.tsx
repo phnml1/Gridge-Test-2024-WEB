@@ -44,6 +44,7 @@ export const JoinButtonWrap = styled.div`
   width: 320px;
   margin-bottom: 39px;
   display:flex;
+  flex-direction: column;
   align-items: center;
   gap:10px;
   margin-top:10px;
