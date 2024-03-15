@@ -21,15 +21,14 @@ request.interceptors.request.use(
 
     if (decodedJwt.exp ?? 0 < currentTime) {
       try {
-        // Send token refresh request to the server
+        // 서버 토근 재발급요청
         const response = await axios.post(
           `${process.env.REACT_APP_API}/auth/jwt`,
           {
             jwt: jwt,
           }
         );
-        const newToken = response.data.result.jwt; // assuming the new token is returned in the response
-        // Update localStorage with the new token
+        const newToken = response.data.result.jwt; 
         window.localStorage.setItem(JWT_KEY, newToken);
       } catch (error) {
         console.error("토큰을 갱신하는 동안 오류가 발생했습니다.", error);
@@ -45,7 +44,7 @@ request.interceptors.request.use(
 
 request.interceptors.response.use(
   (response) => {
-    return response.data;
+    return response;
   },
   (error) => {
     return Promise.reject(error);

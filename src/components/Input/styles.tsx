@@ -4,9 +4,10 @@ export const Wrap = styled.div<{ width: string }>`
   border-radius: 30px;
   border: 1px solid #d0d5dd;
   height: calc(50px - 27.6px);
-  width: calc(${(props) => (props.width ? props.width : "100%")} - 28px);
+  width: calc(${(props) => (props.width ? props.width : "100%")} - 29.6px);
   padding: 13px 14px;
   margin:0;
+  position:relative;
 `;
 export const InputWrap = styled.div`
   height:24px;
