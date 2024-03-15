@@ -120,7 +120,7 @@ const Login = () => {
           <JoinBox>
             계정이 없으신가요?
 
-            <JoinButton>가입하기</JoinButton>
+            <JoinButton onClick={() => {navigate('/sign-up')}}>가입하기</JoinButton>
           </JoinBox>
           <AppGuideMessage>앱을 다운로드 하세요.</AppGuideMessage>
           <AppDownLoad>
