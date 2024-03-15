@@ -1,9 +1,7 @@
 import React from "react";
 import AppHeader from "../components/Header";
-import AppContent from "../components/Content";
-import AppFooter from "../components/Footer";
 import styled from "styled-components";
-import { supportDeviceSize } from "../components/styles";
+
 
 const DefaultLayout = () => {
   /*const navigate = useNavigate()
@@ -16,12 +14,9 @@ const DefaultLayout = () => {
       navigate('/login')
     }
   }, [])*/
-
   return (
     <Root>
       <AppHeader />
-      <AppContent />
-      <AppFooter />
     </Root>
   );
 };
@@ -29,12 +24,12 @@ const DefaultLayout = () => {
 const Root = styled.div`
   display: flex;
   flex-direction: column;
-  width: 1080px;
-  height: 100vh;
-  background-color: green;
-
-  @media all and (max-width: ${supportDeviceSize}px) {
-    width: 100vw;
+  width: 100%;
+  height: 1024px;
+  background: #F6F6F6;
+  align-items: center;
+  @media (max-width: 1132px) {
+    width: 100%;
   }
 `;
 

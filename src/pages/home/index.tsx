@@ -6,7 +6,7 @@ import { HomeRoot, Wrap } from "./styles";
 const Home = () => {
   const [name] = useRecoilState(nameState);
   const [jwt] = useRecoilState(jwtState);
-
+  
   return (
     <HomeRoot>
       <Wrap>

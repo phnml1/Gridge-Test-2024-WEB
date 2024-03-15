@@ -22,7 +22,15 @@ body {
     flex-direction: column;
     align-items: center;
 }
+#root {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
 `;
+
 export const TextLgSemibold = css`
   //styleName: Text lg/Semibold;
   font-family: SF Pro Display;
