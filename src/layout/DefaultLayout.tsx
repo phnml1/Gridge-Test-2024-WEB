@@ -3,7 +3,7 @@ import AppHeader from "../components/Header";
 import styled from "styled-components";
 
 
-const DefaultLayout = () => {
+const DefaultLayout = ({ children }: React.PropsWithChildren) => {
   /*const navigate = useNavigate()
 
   // 페이지 첫 로딩시 로직
@@ -17,6 +17,7 @@ const DefaultLayout = () => {
   return (
     <Root>
       <AppHeader />
+      {children}
     </Root>
   );
 };

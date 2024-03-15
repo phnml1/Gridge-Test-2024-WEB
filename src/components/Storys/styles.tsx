@@ -1,0 +1,29 @@
+import styled from "styled-components";
+
+export const Wrap = styled.div`
+box-sizing: border-box;
+  width: 520px;
+  height:130px;
+  display:flex;
+  gap:8px;
+  border: 1px solid #CCCCCC;
+  border-radius: 10px; 
+  align-items: center;
+  padding: 0 20px;
+  background: #FFFFFF;
+
+`;
+export const Story = styled.div`
+width: 90px;
+height: 90px;
+border-radius: 100%;
+background: linear-gradient(209.83deg, #1570EF 7.74%, #9EEFF4 94.51%);
+display:flex;
+justify-content:center;
+align-items: center;
+`;
+export const StoryImg = styled.img`
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+`

@@ -1,29 +1,30 @@
 import React from "react";
-import { useRecoilState } from "recoil";
-import { jwtState, nameState } from "../../recoil/login";
-import { HomeRoot, Wrap } from "./styles";
-
+// import { useRecoilState } from "recoil";
+// import { jwtState, nameState } from "../../recoil/login";
+import { BoardsWrap, HomeRoot, Side, Wrap } from "./styles";
+import DefaultLayout from "../../layout/DefaultLayout";
+import Storys from "../../components/Storys";
+import story1 from '../../assets/tempstory/story1.png';
+import story2 from '../../assets/tempstory/story2.png';
+import story3 from '../../assets/tempstory/story3.png';
+import story4 from '../../assets/tempstory/story4.png';
 const Home = () => {
-  const [name] = useRecoilState(nameState);
-  const [jwt] = useRecoilState(jwtState);
+  // const [name] = useRecoilState(nameState);
+  // const [jwt] = useRecoilState(jwtState);
   
   return (
+    <DefaultLayout>
     <HomeRoot>
       <Wrap>
-        <h4 style={{ color: "white" }}>항상 {name}님을 응원합니다 !</h4>
-      </Wrap>
-      <br />
-      <Wrap>
-        <h5 style={{ color: "white" }}>로그인 여부 : {jwt}</h5>
-      </Wrap>
-      <br />
-      <Wrap>
-        <h4 style={{ color: "white" }}>
-          실제 개발 할 때는 인라인 스타일 보다는 styled-components 를
-          사용해주세요.
-        </h4>
+        <BoardsWrap>
+          <Storys storys={[story1,story2,story3,story4]}></Storys>
+        </BoardsWrap>
+        <Side>
+
+        </Side>
       </Wrap>
     </HomeRoot>
+    </DefaultLayout>
   );
 };
 
