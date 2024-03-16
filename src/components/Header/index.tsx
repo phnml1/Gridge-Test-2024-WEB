@@ -9,11 +9,11 @@ import plusSquare from '../../assets/plus-square.png';
 import maskGroup from '../../assets/mask-group.png';
 import Dropdown from "./components/Dropdown";
 import { useRecoilState } from "recoil";
-import { sidebarState } from "../../recoil/home";
+import { dropdownState } from "../../recoil/home";
 const AppHeader = () => {
 
   // const dispatch = useDispatch()
-  const [sidebar, setSideBar] = useRecoilState<boolean>(sidebarState);
+  const [sidebar, setSideBar] = useRecoilState<boolean>(dropdownState);
   // const [visible, setVisible] = useState(false)
   return (
     <HeaderWrap>

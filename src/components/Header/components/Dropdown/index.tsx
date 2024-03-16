@@ -5,9 +5,9 @@ import bookmark from '../../../../assets/bookmark.png';
 import setting from '../../../../assets/settings.png';
 import alertCircle from '../../../../assets/alert-circle.png';
 import { useRecoilState } from "recoil";
-import { sidebarState } from "../../../../recoil/home";
+import { dropdownState } from "../../../../recoil/home";
 const Dropdown = () => {
-  const [,setSideBar] = useRecoilState(sidebarState);
+  const [,setSideBar] = useRecoilState(dropdownState);
   const handleOutsideClick = (e: MouseEvent) => {
     if (!e.target || !(e.target instanceof HTMLElement) || !e.target.closest('.dropdown')) {
       setSideBar(false); // 입력 창 밖을 클릭하면 dropdown 메뉴를 숨김

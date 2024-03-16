@@ -30,7 +30,16 @@ body {
 
 }
 `;
+export const TextLgBold = css`
+//styleName: Text lg/Bold;
+font-family: SF Pro Display;
+font-size: 18px;
+font-weight: 700;
+line-height: 28px;
+letter-spacing: 0em;
+text-align: left;
 
+`
 export const TextLgSemibold = css`
   //styleName: Text lg/Semibold;
   font-family: SF Pro Display;
@@ -75,7 +84,16 @@ export const TextSmMedium = css`
   letter-spacing: 0em;
   text-align: center;
 `;
+export const TextSmSemiBold = css`
+//styleName: Text sm/Semibold;
+font-family: SF Pro Display;
+font-size: 14px;
+font-weight: 600;
+line-height: 20px;
+letter-spacing: 0em;
+text-align: left;
 
+`
 export const TextSmRegular = css`
   //styleName: Text sm/Regular;
   font-family: SF Pro Display;

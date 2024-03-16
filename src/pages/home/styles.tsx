@@ -34,11 +34,9 @@ export const FeedsWrap = styled.div`
   }
 `;
 
-export const Side = styled.div`
-  width:416px;
-  background: white;
-  height:100%;
-  @media (max-width: 1000px) {
-    display:none;
-  }
-`
+
+
+export const Profile = styled.div`
+  width: 80px;
+  height: 80px;
+`;

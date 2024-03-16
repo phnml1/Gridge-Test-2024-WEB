@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 // import { useRecoilState } from "recoil";
 // import { jwtState, nameState } from "../../recoil/login";
-import { FeedsWrap, HomeRoot, Side, Wrap } from "./styles";
+import { FeedsWrap, HomeRoot, Wrap } from "./styles";
 import DefaultLayout from "../../layout/DefaultLayout";
 import Storys from "../../components/Storys";
 import story1 from '../../assets/tempstory/story1.png';
@@ -12,6 +12,7 @@ import request from "../../apis/core";
 import { useRecoilState } from "recoil";
 import { feedsState } from "../../recoil/home";
 import Feeds from "../../components/Feeds";
+import Side from '../../components/home/Side';
 const Home = () => {
   // const [name] = useRecoilState(nameState);
   // const [jwt] = useRecoilState(jwtState);
@@ -33,9 +34,7 @@ const Home = () => {
           <Storys storys={[story1,story2,story3,story4]}></Storys>
           <Feeds />
         </FeedsWrap>
-        <Side>
-
-        </Side>
+        <Side/>
       </Wrap>
     </HomeRoot>
     </DefaultLayout>
