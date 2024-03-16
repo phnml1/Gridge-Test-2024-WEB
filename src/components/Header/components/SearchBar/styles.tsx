@@ -13,6 +13,9 @@ export const Wrap = styled.div`
 padding: 10px 14px 10px 14px;
 border-radius: 8px;
 margin-bottom:1px;
+@media (max-width: 520px) {
+  display:none;
+}
 `;
 export const InputWrap = styled.div`
 width: 284px;

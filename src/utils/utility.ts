@@ -40,9 +40,11 @@ export const activateJoinButton = (id:string,name:string,nickname:string,passwor
 export const isValidPhoneOrEmail =  (input: string) => {
   return isValidPhoneNumber(input) && isValidEmail(input);
 }
+
 export const isValidName = (name:string) => {
   return (name.length>=1);
 }
+
 export const isValidId = (id:string) => {
   const regex = /^[a-zA-Z0-9_.]+$/;
 
@@ -51,12 +53,22 @@ export const isValidId = (id:string) => {
   }
   return false;
 }
+
 export const isValidPassword = (password:string) => {
   if(password.length>=6) {
     return true;
   }
   return false;
 }
+
+export const truncateText = (text:string) => {
+  if (text.length > 10) {
+    return text.substring(0, 10) + '...';
+  } else {
+    return text;
+  }
+}
+
 export const isCanLogin = (id:string,password:string) => {
   if(id.length>=1 && password.length>=6) {
     return true;

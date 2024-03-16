@@ -1,45 +1,39 @@
 import styled from "styled-components";
+import { supportDeviceSize } from "../../components/styles";
 
 export const HomeRoot = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  height:100%;
   background: #F6F6F6;
+  @media all and (max-width: ${supportDeviceSize}px) {
+    width: 100vw;
+  }
 `;
 
 export const Wrap = styled.div`
   display: flex;
   gap: 104px;
-  height:100%;
   justify-content: center;
+  @media all and (max-width: ${supportDeviceSize}px) {
+    align-items: center;
+    padding: 0 40px;
+  }
 `;
-export const BoardsWrap = styled.div`
+export const FeedsWrap = styled.div`
   width: 520px;
-  height:100%;
   margin-top:30px;
   @media (min-width: 1001px) {
     margin-left:88px;
   }
+  display: flex;
+  flex-direction: column;
+  @media all and (max-width: 520px) {
+    width: 100%;
+    align-items: center;
+  }
 `;
-export const Storys = styled.div`
-  width: 520px;
-  height:130px;
-  display:flex;
-  gap:8px;
-  border: 1px solid #CCCCCC;
-  border-radius: 10px; 
-  align-items: center;
-  padding: 0 20px;
-`;
-export const Story = styled.div`
-width: 90px;
-height: 90px;
-border-radius: 100%;
-background: linear-gradient(209.83deg, #1570EF 7.74%, #9EEFF4 94.51%);
 
-
-`
 export const Side = styled.div`
   width:416px;
   background: white;

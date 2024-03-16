@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrap = styled.div`
 box-sizing: border-box;
-  width: 520px;
+  width: 100%;
   height:130px;
   display:flex;
   gap:8px;
@@ -11,7 +11,9 @@ box-sizing: border-box;
   align-items: center;
   padding: 0 20px;
   background: #FFFFFF;
-
+  overflow: hidden;
+  justify-content: flex-start;
+  overflow: auto;
 `;
 export const Story = styled.div`
 width: 90px;

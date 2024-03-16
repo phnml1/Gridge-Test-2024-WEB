@@ -49,6 +49,23 @@ export const TextMdSemibold = css`
   letter-spacing: 0em;
   text-align: center;
 `;
+export const TextSmBold = css`
+//styleName: Text sm/Bold;
+font-family: SF Pro Display;
+font-size: 14px;
+font-weight: 700;
+line-height: 20px;
+letter-spacing: 0em;
+text-align: left;
+`;
+export const TextXsMedium = css`//styleName: Text xs/Medium;
+font-family: SF Pro Display;
+font-size: 12px;
+font-weight: 500;
+line-height: 18px;
+letter-spacing: 0em;
+text-align: left;
+`;
 export const TextSmMedium = css`
   //styleName: Text sm/Medium;
   font-family: SF Pro Display;
