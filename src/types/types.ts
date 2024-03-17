@@ -19,3 +19,8 @@ export interface FeedType {
     contentUrl: string;
   }[];
 }
+export interface FeedContentListType {
+    id: number;
+    contentUrl: string;
+  
+}

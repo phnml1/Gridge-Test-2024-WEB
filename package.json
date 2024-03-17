@@ -27,7 +27,9 @@
     "react-router-dom": "^6.2.2",
     "recoil": "^0.7.7",
     "simplebar-react": "^2.4.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "swiper": "^11.0.7",
+    "vm-browserify": "^1.1.2"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.0",
