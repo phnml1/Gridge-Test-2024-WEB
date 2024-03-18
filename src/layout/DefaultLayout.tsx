@@ -1,6 +1,7 @@
 import React from "react";
 import AppHeader from "../components/Header";
 import styled from "styled-components";
+import BottomNavBar from "../components/BottomNavBar";
 
 
 const DefaultLayout = ({ children }: React.PropsWithChildren) => {
@@ -18,6 +19,7 @@ const DefaultLayout = ({ children }: React.PropsWithChildren) => {
     <Root>
       <AppHeader />
       {children}
+      <BottomNavBar/>
     </Root>
   );
 };
@@ -32,6 +34,7 @@ const Root = styled.div`
   @media (max-width: 1132px) {
     width: 100%;
   }
+  position: relative;
 `;
 
 export default DefaultLayout;
