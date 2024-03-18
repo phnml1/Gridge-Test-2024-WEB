@@ -14,7 +14,7 @@ import JoinInputBox from "../../components/Join/JoinInputBox";
 import { userInfo } from "../../types/types";
 import BirthInputBox from "../../components/Join/BirthInputBox";
 import AgreeBox from "../../components/Join/AgreeBox";
-import request from "../../apis/core";
+import { requestNotJwt } from "../../apis/core";
 import { useNavigate } from "react-router-dom";
 
 
@@ -30,7 +30,7 @@ const Join = () => {
   const navigate = useNavigate();
    const join = async () => {
     try {
-      await request.post('/auth/sign-up',userInfo);
+      await requestNotJwt.post('/auth/sign-up',userInfo);
       navigate('/login');
     }
     catch(error) {

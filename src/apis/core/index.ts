@@ -3,7 +3,11 @@ import { JWT_KEY } from "../../config/constant";
 import * as jsonwebtoken from "jsonwebtoken";
 import { JwtPayload } from "jsonwebtoken";
 
-const request: AxiosInstance = axios.create({
+export const requestNotJwt :AxiosInstance = axios.create({
+  baseURL: process.env.REACT_APP_API,
+  timeout:2500,
+})
+export const request: AxiosInstance = axios.create({
   baseURL: process.env.REACT_APP_API,
   timeout: 2500,
 
@@ -19,7 +23,7 @@ request.interceptors.request.use(
     const decodedJwt: JwtPayload = jsonwebtoken.decode(jwt) as JwtPayload;
     const currentTime = new Date().getTime() / 1000;
 
-    if (decodedJwt.exp ?? 0 < currentTime) {
+    if (decodedJwt.exp?? 0 < currentTime) {
       try {
         // 서버 토근 재발급요청
         const response = await axios.post(
@@ -50,5 +54,12 @@ request.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
+requestNotJwt.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 export default request;

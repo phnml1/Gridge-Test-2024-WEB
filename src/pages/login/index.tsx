@@ -29,9 +29,9 @@ import { isCanLogin } from "../../utils/utility";
 
 import { useRecoilState } from "recoil";
 import { jwtState, nameState } from "../../recoil/login";
-import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import KakaoButton from "../../components/Buttons/KakaoButton";
+import { requestNotJwt } from "../../apis/core";
 
 const Login = () => {
   const [id, setId] = useState<string>("");
@@ -56,7 +56,7 @@ const Login = () => {
           alert('비밀번호는 6자리 이상을 입력해야 합니다.')
         }
   
-       const response = await axios.post(`${process.env.REACT_APP_API}/auth/sign-in`,{
+       const response = await requestNotJwt.post(`/auth/sign-in`,{
         "loginId":`${id}`,
         "password": `${password}`,
       })
@@ -120,7 +120,7 @@ const Login = () => {
           <JoinBox>
             계정이 없으신가요?
 
-            <JoinButton>가입하기</JoinButton>
+            <JoinButton onClick={() => {navigate('/sign-up')}}>가입하기</JoinButton>
           </JoinBox>
           <AppGuideMessage>앱을 다운로드 하세요.</AppGuideMessage>
           <AppDownLoad>
