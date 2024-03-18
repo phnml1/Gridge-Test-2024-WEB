@@ -6,6 +6,9 @@ import { JwtPayload } from "jsonwebtoken";
 export const requestNotJwt :AxiosInstance = axios.create({
   baseURL: process.env.REACT_APP_API,
   timeout:2500,
+  headers: {
+    accept: "application/json",
+  }
 })
 export const request: AxiosInstance = axios.create({
   baseURL: process.env.REACT_APP_API,

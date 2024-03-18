@@ -22,5 +22,7 @@ export interface FeedType {
 export interface FeedContentListType {
     id: number;
     contentUrl: string;
-  
 }
+
+export interface CommentType {
+  id: number; writeUserLoginId: string; commentText:string;}

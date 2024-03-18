@@ -1,13 +1,12 @@
 import styled from "styled-components";
-import { supportDeviceSize } from "../../components/styles";
 
 export const HomeRoot = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   background: #F6F6F6;
-  @media all and (max-width: ${supportDeviceSize}px) {
-    width: 100vw;
+  @media all and (max-width: 1000px) {
+    width: 100%;
   }
 `;
 
@@ -15,8 +14,7 @@ export const Wrap = styled.div`
   display: flex;
   gap: 104px;
   justify-content: center;
-  @media all and (max-width: ${supportDeviceSize}px) {
-    align-items: center;
+  @media all and (max-width: 1000px) {
     padding: 0 40px;
   }
 `;

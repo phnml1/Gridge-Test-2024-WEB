@@ -10,21 +10,21 @@ export const Item = styled.img`
   height:100%;
   width:100%;
 `;
-export const Left = styled.img`
+export const Left = styled.img<{pos:number}>`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left:20px;
+  left:${(props) => props.pos}px;
   width: 30px;
   height:30px;
   cursor:pointer;
   z-index:999;
 `;
-export const Right = styled.img`
+export const Right = styled.img<{pos:number}>`
 position: absolute;
 top: 50%;
 transform: translateY(-50%);
-right: 20px;
+right: ${(props) => props.pos}px;
 width: 30px;
 height:30px;
 cursor:pointer;
@@ -38,7 +38,7 @@ export const Indexes = styled.div`
   height: 5px;
   justify-content: center;
   position:absolute;
-  bottom: -34px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   z-index:40;

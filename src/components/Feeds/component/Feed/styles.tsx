@@ -10,13 +10,9 @@ export const Wrap = styled.div`
 border-radius: 10px;
 overflow: hidden;
 `
-export const ContentBackGround = styled.div<{background:string,index:number}>`
+export const ContentBackGround = styled.div`
   width: 100%;
   position: relative;
-  background: url(${props => props.background});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover; // 배경 이미지를 요소에 맞추어 자동으로 조절합니다.
   @media(min-width:521px) {
     height: 520px;
   }
@@ -33,6 +29,7 @@ left: 15px;
 border: 0.5px solid #FFFFFF;
 box-sizing: border-box;
 border-radius:100%;
+z-index:3;
 `;
 export const ProFileName = styled.div`
 position: absolute;
@@ -40,6 +37,7 @@ top: 26px;
 left: 55px;
 color: #FFFFFF;
 ${TextMdSemibold};
+z-index:3;
 `;
 
 export const More = styled.img`
@@ -48,6 +46,7 @@ top: 28px;
 right: 17px;
 width: 20px;
 height:20px;
+z-index:3;
 `;
 export const HeartComment = styled.div`
   display:flex;
@@ -126,6 +125,7 @@ border-radius: 100%;
 export const BoldContent = styled.div`
   ${TextSmBold}
   color: #191919;
+  max-height:20px;
 `
 export const FeedText = styled.div`
   display:flex;
@@ -139,11 +139,13 @@ cursor:pointer;
 `
 export const FeedContentSumContent = styled.div`
   ${TextSmMedium}
+  text-align: left;
 `
 export const Comment = styled.div`
 ${TextSmMedium}
   color: #999999;
   margin-top: 5px;
+  cursor:pointer;
 `;
 
 export const Time = styled.div`
