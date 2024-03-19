@@ -11,7 +11,7 @@ export const Wrap = styled.div`
   gap: 8px;
 `
 export const Input = styled.input`
-  width: calc(100% - 38px);
+  width: calc(100% - 98px);
   padding:0;
   border:0;
   outline:0;

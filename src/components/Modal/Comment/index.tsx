@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { Wrap,Comment, ProFile, Content } from "./styles";
-import { useRecoilState } from "recoil";
-import { modalState } from "../../../recoil/home";
 import request from "../../../apis/core";
 import maskIcon  from '../../../assets/mask-group.png';
 import { CommentType } from "../../../types/types";
 
 interface CommentsProps {
   count: number;
+  id: number;
 }
 const Comments = (props:CommentsProps) =>{
-  const [modal] = useRecoilState(modalState);
   const [info, setInfo] = useState<CommentType[]>();
   const getComment = async () => {
-    const response = await request.get(`/feeds/${modal}/comments`,{params:{
+    const response = await request.get(`/feeds/${props.id}/comments`,{params:{
       size:props.count,
       page:1,
     }});
     setInfo(response.data.result.commentList)
   };
   useEffect(() => {
+    if(props.count>0) {
     getComment();
-  },[modal]);
+    }
+  },[props.id]);
   return (<Wrap>
     {info?.map((a:CommentType) => (<Comment key={a.id}>
       <ProFile src={maskIcon}/>

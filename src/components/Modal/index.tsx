@@ -19,7 +19,7 @@ import {
   Wrap,
 } from "./styles";
 import { useRecoilState } from "recoil";
-import { feedsState, modalState } from "../../recoil/home";
+import { modalState } from "../../recoil/home";
 import maskIcon from '../../assets/mask-group.png';
 import "swiper/css";
 import "swiper/css/navigation";
@@ -33,27 +33,22 @@ import Comments from "./Comment";
 import ModalInfo from "./ModalInfo";
 import CommentInput from "./Input";
 // import Input from "./Input";
-
 const Modal = () => {
-  const [feeds] = useRecoilState<FeedType[]>(feedsState);
-  const [modal, setModal] = useRecoilState<number>(modalState);
+  const [modal, setModal] = useRecoilState<FeedType|null>(modalState);
   
-  const index:number = feeds.findIndex((feed) => feed.id === modal);
   return (
     <Wrap>
       <OutSide
         onClick={() => {
-          setModal(-1);
+          setModal(null);
         }}
       ></OutSide>
-      <ModalWrap>
+      {(modal !== null)&&(<ModalWrap>
         <ModalBackground>
-          {modal && (
-            <ContentSwiper isModal={true} contents={feeds[index].contentList} buttonpos={20} />
-          )}
+            <ContentSwiper isModal={true} contents={modal.contentList} buttonpos={20} />
         </ModalBackground>
         <ModalContent>
-          <ProFileWrap><ProFile><ProFileImg src={maskIcon}/><ProFileName>{feeds[index].feedLoginId}</ProFileName></ProFile>
+          <ProFileWrap><ProFile><ProFileImg src={maskIcon}/><ProFileName>{modal.feedLoginId}</ProFileName></ProFile>
           <More src={more}/>
           </ProFileWrap>
           <ContentAndComment>
@@ -62,19 +57,19 @@ const Modal = () => {
               <ProFileImg src={maskIcon}/>
           </ContentProFileWrap>
           <Contents>
-          <ProFileName>{feeds[index].feedLoginId}</ProFileName>
-          <Content>{feeds[index].feedText}</Content>
-          <Time>{timeForToday(feeds[index].updatedAt)}</Time>
+          <ProFileName>{modal.feedLoginId}</ProFileName>
+          <Content>{modal.feedText}</Content>
+          <Time>{timeForToday(modal.updatedAt)}</Time>
              
           </Contents>
           </ContentWrap>
-          <CommentWrap><Comments count = {feeds[index].feedCommentCount}/></CommentWrap>
+          <CommentWrap><Comments id = {modal.id} count = {modal.feedCommentCount}/></CommentWrap>
           </ContentAndComment>
-          <ModalInfo date = {feeds[index].updatedAt}/>
+          <ModalInfo date = {modal.updatedAt}/>
           <CommentInput />
         </ModalContent>
              
-      </ModalWrap>
+      </ModalWrap>)}
     </Wrap>
   );
 };

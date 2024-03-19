@@ -61,6 +61,10 @@ export const ModalWrap = styled.div`
   display:flex;
   justify-content:center;
   max-width:1072px;
+  @media (max-width:698px) {
+    flex-direction: column;
+    overflow: auto;
+  }
   `;
 
 export const ContentWrap = styled.div`
@@ -74,8 +78,8 @@ export const ContentProFileWrap = styled.div`
 `;
 export const ContentAndComment = styled.div`
   width:100%;
-  overflow-y: scroll;
   height: calc(100% - 227px);
+  overflow: auto;
 `
 export const Contents = styled.div`
 width:100%;
@@ -106,10 +110,16 @@ width:calc(100% - 374px);
   max-width: 698px;
   height:100%;
   position:relative;
+  @media (max-width: 698px) {
+    width: 100%;
+  }
 `
 export const ModalContent = styled.div`
   min-width: 374px;
   width:374px;
+  @media (max-width: 698px) {
+    width: 100%;
+  }
 `
 export const More = styled.img`
   width:24px;
