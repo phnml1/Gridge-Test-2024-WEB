@@ -66,7 +66,7 @@ const Modal = () => {
           <CommentWrap><Comments id = {modal.id} count = {modal.feedCommentCount}/></CommentWrap>
           </ContentAndComment>
           <ModalInfo date = {modal.updatedAt}/>
-          <CommentInput />
+          <CommentInput id = {modal.id}/>
         </ModalContent>
              
       </ModalWrap>)}

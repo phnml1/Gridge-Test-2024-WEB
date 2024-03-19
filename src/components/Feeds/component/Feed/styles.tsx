@@ -17,7 +17,7 @@ export const ContentBackGround = styled.div`
     height: 520px;
   }
   @media (max-width: 520px) {
-    padding-bottom: 100%;
+    height: 100vw;
   }
 `;
 export const ProFile = styled.img`
