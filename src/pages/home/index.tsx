@@ -9,15 +9,17 @@ import story2 from '../../assets/tempstory/story2.png';
 import story3 from '../../assets/tempstory/story3.png';
 import story4 from '../../assets/tempstory/story4.png';
 import { useRecoilState } from "recoil";
-import { modalState } from "../../recoil/home";
+import { modalState, writeModalState } from "../../recoil/home";
 import Feeds from "../../components/Feeds";
 import Side from '../../components/home/Side';
 import Modal from "../../components/Modal";
 import { JWT_KEY } from "../../config/constant";
 import { useNavigate } from "react-router-dom";
+import WriteModal from "../../components/WriteModal";
 
 const Home = () => {
   const [modal] = useRecoilState(modalState);
+  const [writeModal] = useRecoilState(writeModalState);
   const [jwt] = useState(localStorage.getItem(JWT_KEY));
   const navigate = useNavigate();
   useEffect(()=> {
@@ -27,12 +29,12 @@ const Home = () => {
     }
   },[]) 
   useEffect(() => {
-    if (modal!==-1) {
+    if (modal!==-1 || writeModal) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-  },[modal]);
+  },[modal,writeModal]);
   return (
     <DefaultLayout>
     <HomeRoot>
@@ -45,7 +47,7 @@ const Home = () => {
         <Side/>
       </Wrap>
       {modal!==-1 && <Modal />}
-      
+      {writeModal && <WriteModal />}
     </HomeRoot>
 
     </DefaultLayout>
