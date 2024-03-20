@@ -1,3 +1,4 @@
+import { ID_KEY, JWT_KEY } from "../config/constant";
 
 
 export const isValidEmail = (email: string) => {
@@ -30,7 +31,7 @@ export const addZeroIfNeeded = (number:number) => {
   return isSingleDigit ? `0${number}` : `${number}`;
 }
 export const activateJoinButton = (id:string,name:string,nickname:string,password:string) => {
-  if (id.length>=1 && name.length>=1 && nickname.length>=1 && password.length>7) {
+  if (id.length>=1 && name.length>=1 && nickname.length>=1 && isValidPassword(password)) {
     return true
   }
   return false;
@@ -54,8 +55,13 @@ export const isValidId = (id:string) => {
   return false;
 }
 
+export const removeJwt = () => {
+  localStorage.removeItem(JWT_KEY);
+  localStorage.removeItem(ID_KEY);
+}
+
 export const isValidPassword = (password:string) => {
-  if(password.length>7) {
+  if(password.length>=7) {
     return true;
   }
   return false;
@@ -70,7 +76,7 @@ export const truncateText = (text:string) => {
 }
 
 export const isCanLogin = (id:string,password:string) => {
-  if(id.length>=1 && password.length>=6) {
+  if(id.length>=1 && password.length>=7) {
     return true;
   }
   return false;

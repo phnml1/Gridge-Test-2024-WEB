@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // import { useRecoilState } from "recoil";
 // import { jwtState, nameState } from "../../recoil/login";
 import { FeedsWrap, HomeRoot, Wrap } from "./styles";
@@ -13,23 +13,19 @@ import { modalState } from "../../recoil/home";
 import Feeds from "../../components/Feeds";
 import Side from '../../components/home/Side';
 import Modal from "../../components/Modal";
-import { jwtState } from "../../recoil/login";
 import { JWT_KEY } from "../../config/constant";
 import { useNavigate } from "react-router-dom";
+
 const Home = () => {
-  // const [name] = useRecoilState(nameState);
-  const [,setJwt] = useRecoilState(jwtState);
   const [modal] = useRecoilState(modalState);
-  const jwtStorage = window.localStorage.getItem(JWT_KEY);
+  const [jwt] = useState(localStorage.getItem(JWT_KEY));
   const navigate = useNavigate();
   useEffect(()=> {
-    if(jwtStorage) {
-    setJwt(jwtStorage);
-    } else {
+    if(!jwt) {
       alert('다시 로그인해주세요');
-      navigate('/sign-in');
+      navigate('/login');
     }
-  },[jwtStorage]) 
+  },[]) 
   useEffect(() => {
     if (modal!==-1) {
       document.body.style.overflow = 'hidden';

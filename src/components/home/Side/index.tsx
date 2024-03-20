@@ -1,14 +1,22 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { ProfileWrap, ProfileImg, Wrap, ProfileContent, MyId, MyName, RecommandFriends, ShowAll, RecommandTitle, RecommandContents, RecommandContent, RecommandContentProFile, RecommandImg, FollowButton } from "./styles"
 import maskicon from '../../../assets/mask-group.png';
+import request from "../../../apis/core";
+import { ID_KEY } from "../../../config/constant";
 const Side = () => {
-
+  const [id] = useState(localStorage.getItem(ID_KEY));
+  const [profile,setProFile] = useState({id:'',name:''})
+  const handle = async () => {
+    const response = await request.get(`/users/${id}/profile`)
+    setProFile((prev)=>({...prev,id:response.data.result.loginId,name:response.data.result.realName}));
+  }
+  useEffect(()=> {handle()},[id])
   return (<Wrap>
     <ProfileWrap>
       <ProfileImg src = {maskicon}/>
       <ProfileContent>
-        <MyId>happypuppy</MyId>
-        <MyName>블루</MyName>
+        <MyId>{profile.id}</MyId>
+        <MyName>{profile.name}</MyName>
       </ProfileContent>
       
     </ProfileWrap>

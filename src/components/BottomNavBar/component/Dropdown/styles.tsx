@@ -16,9 +16,7 @@ export const Wrap = styled.div`
   bottom: 61px;
   right: 0;
   z-index: 8;
-  @media (min-width: 1000px) {
-    display: none;
-  }
+  
 `;
 export const Item = styled.div`
   width: 240px;
