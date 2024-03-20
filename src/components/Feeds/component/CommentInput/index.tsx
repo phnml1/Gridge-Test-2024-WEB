@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Input, ProFile, Wrap } from "./styles";
 import maskIcon from '../../../../assets/mask-group.png'
 import { useAddComment } from "../../../../hooks/useAddComment";
@@ -7,11 +7,18 @@ interface InputProps {
 }
 const CommentInput = (props: InputProps) => {
   const [value, setValue] = useState<string>('');
-  const { addComment } = useAddComment();
+  const { addComment, data, isSuccess } = useAddComment();
 
   const handleClick = () => {
     addComment({ feedId: props.id, commentText: value });
   };
+  useEffect(()=>
+  {
+    if(isSuccess){
+      setValue('');
+    }
+  },
+  [data,isSuccess])
 
   return (
     <Wrap>
