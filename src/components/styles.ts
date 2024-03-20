@@ -130,3 +130,29 @@ export const TextMdMedium = css`
   letter-spacing: 0em;
   text-align: left;
 `;
+export const TextLgMedium = css`
+font-family: SF Pro Display;
+font-size: 18px;
+font-weight: 500;
+line-height: 28px;
+text-align: left;
+`;
+export const TextXlSemiBold = css`
+//styleName: Text xl/Semibold;
+font-family: SF Pro Display;
+font-size: 20px;
+font-weight: 600;
+line-height: 30px;
+text-align: left;
+
+`;
+
+export const DisplayXsMedium = css`
+//styleName: Display xs/Medium;
+font-family: SF Pro Display;
+font-size: 24px;
+font-weight: 500;
+line-height: 32px;
+text-align: left;
+
+`
