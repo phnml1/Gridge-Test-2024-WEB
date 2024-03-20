@@ -20,9 +20,9 @@ const PlusMenu = (props:PlusMenuProps) => {
     </Image><Xbutton onClick = {() => props.setImageUrls(prevUrls =>
     prevUrls.filter(item => item.id !== a.id)
   )} src={xButton}/></Content>)}
-    <label htmlFor="fileInput">
+    {(props.contents.length<5)&&(<label htmlFor="fileInput">
     <Button src = {plusButton} />
-    </label>
+    </label>)}
     <input
           id="fileInput"
           type="file"

@@ -1,16 +1,20 @@
-import React, { useState } from "react"
+import React, { SetStateAction, useState } from "react"
 import { InputWrap, ProFile, Wrap, Image, TextInput, Name, Length, MenuWrap, Menu, MenuImg, MapMenu, LastMenu } from "./styles"
 import maskIcon from '../../../assets/mask-group.png';
 import { useRecoilState } from "recoil";
 import { nameState } from "../../../recoil/login";
 import mapPin from '../../../assets/map-pin.png';
 import down from '../../../assets/chevron-down.png';
-const Input = () => {
+interface InputProps {
+  setFeedText: React.Dispatch<SetStateAction<string>>
+}
+const Input = (props:InputProps) => {
   const [name] = useRecoilState(nameState);
   const [textValue, setTextValue] = useState("");
   const maxLength = 2200;
   const handleSetValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTextValue(e.target.value);
+    props.setFeedText(e.target.value);
   };
   return (<Wrap>
     <InputWrap>
