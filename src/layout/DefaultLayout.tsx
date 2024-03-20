@@ -1,11 +1,10 @@
 import React from "react";
 import AppHeader from "../components/Header";
-import AppContent from "../components/Content";
-import AppFooter from "../components/Footer";
 import styled from "styled-components";
-import { supportDeviceSize } from "../components/styles";
+import BottomNavBar from "../components/BottomNavBar";
 
-const DefaultLayout = () => {
+
+const DefaultLayout = ({ children }: React.PropsWithChildren) => {
   /*const navigate = useNavigate()
 
   // 페이지 첫 로딩시 로직
@@ -16,12 +15,11 @@ const DefaultLayout = () => {
       navigate('/login')
     }
   }, [])*/
-
   return (
     <Root>
       <AppHeader />
-      <AppContent />
-      <AppFooter />
+      {children}
+      <BottomNavBar/>
     </Root>
   );
 };
@@ -29,13 +27,14 @@ const DefaultLayout = () => {
 const Root = styled.div`
   display: flex;
   flex-direction: column;
-  width: 1080px;
-  height: 100vh;
-  background-color: green;
-
-  @media all and (max-width: ${supportDeviceSize}px) {
-    width: 100vw;
+  width: 100%;
+  overflow: auto;
+  background: #F6F6F6;
+  align-items: center;
+  @media (max-width: 1132px) {
+    width: 100%;
   }
+  position: relative;
 `;
 
 export default DefaultLayout;

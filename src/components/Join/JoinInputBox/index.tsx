@@ -15,7 +15,7 @@ import {
   isValidPassword,
   isValidPhoneNumber,
 } from "../../../utils/utility";
-import request from "../../../apis/core";
+import { requestNotJwt } from "../../../apis/core";
 import React from "react";
 import { userInfo } from "../../../types/types";
 import { JoinButton } from "../styles";
@@ -50,7 +50,7 @@ const JoinInputBox =  (props:JoinInputBoxProps) => {
   }, [phoneNumber, name, id, password]);
   const findExistId = async (id:string) => {
     
-    const isduplicated = await request.get('/users',{
+    const isduplicated = await requestNotJwt.get('/users',{
       params:{
         loginId:id
       }

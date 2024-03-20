@@ -25,13 +25,14 @@ import mail from "../../assets/mail.png";
 import lock from "../../assets/lock.png";
 import playStore from "../../assets/play-store-button.png";
 import appStore from "../../assets/app-store-button.png";
-import { isCanLogin } from "../../utils/utility";
+import { isCanLogin, isValidPassword } from "../../utils/utility";
 
 import { useRecoilState } from "recoil";
 import { jwtState, nameState } from "../../recoil/login";
-import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import KakaoButton from "../../components/Buttons/KakaoButton";
+import { requestNotJwt } from "../../apis/core";
+import { JWT_KEY } from "../../config/constant";
 
 const Login = () => {
   const [id, setId] = useState<string>("");
@@ -52,18 +53,19 @@ const Login = () => {
           alert("이름을 입력해 주세요.");
           return;
         }
-        if (password.length < 6) {
-          alert('비밀번호는 6자리 이상을 입력해야 합니다.')
+        if (!isValidPassword(password)) {
+          alert('비밀번호는 7자리 이상을 입력해야 합니다.')
         }
   
-       const response = await axios.post(`${process.env.REACT_APP_API}/auth/sign-in`,{
+       const response = await requestNotJwt.post(`/auth/sign-in`,{
         "loginId":`${id}`,
         "password": `${password}`,
       })
+      window.localStorage.setItem(JWT_KEY,response.data.result.jwt);
+      window.localStorage.setItem('loginId',id);
         setJwt(response.data.result.jwt);
         setName(response.data.result.id);
-        window.localStorage.setItem('jwt',response.data.result.jwt)
-        navigate(`/`);
+        window.location.replace('/');
       } catch (error) {
         setloginSuccess('아이디나 비밀번호가 틀렸습니다.')
        

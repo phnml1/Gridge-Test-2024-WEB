@@ -72,23 +72,5 @@ export const DropDownCheck = styled.img`
   height: 20px;
   margin-right: 12px;
 `;
-export const JoinButton = styled.div<{top:string, able: boolean }>`
-  width: 320px;
-  padding: 10px 0;
-  border-radius: 30px;
-  font-family: SF Pro Display;
-  line-height: 24px;
-  letter-spacing: 0em;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  color: #ffffff;
-  ${(props) => (props.able ? "cursor: pointer;" : "")}
-  margin-top: ${(props) => (props.top)};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: ${(props) => (props.able ? "#2e90fa;" : "#B2DDFF")};
-  margin-bottom: 39px;
-`;
+
 //화살표는 margin-left:2px or margin-right:-2px;

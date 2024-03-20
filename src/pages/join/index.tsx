@@ -14,7 +14,7 @@ import JoinInputBox from "../../components/Join/JoinInputBox";
 import { userInfo } from "../../types/types";
 import BirthInputBox from "../../components/Join/BirthInputBox";
 import AgreeBox from "../../components/Join/AgreeBox";
-import request from "../../apis/core";
+import { requestNotJwt } from "../../apis/core";
 import { useNavigate } from "react-router-dom";
 
 
@@ -30,7 +30,7 @@ const Join = () => {
   const navigate = useNavigate();
    const join = async () => {
     try {
-      await request.post('/auth/sign-up',userInfo);
+      await requestNotJwt.post('/auth/sign-up',userInfo);
       navigate('/login');
     }
     catch(error) {
@@ -47,7 +47,7 @@ const Join = () => {
         </JoinBox>
         <LoginBox>
           계정이 있으신가요?
-          <LoginButton>로그인</LoginButton>
+          <LoginButton onClick={() => navigate('/login')}>로그인</LoginButton>
         </LoginBox>
         <AppGuideMessage>앱을 다운로드 하세요.</AppGuideMessage>
         <AppDownLoad>

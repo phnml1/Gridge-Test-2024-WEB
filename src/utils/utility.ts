@@ -1,3 +1,4 @@
+import { ID_KEY, JWT_KEY } from "../config/constant";
 
 
 export const isValidEmail = (email: string) => {
@@ -30,7 +31,7 @@ export const addZeroIfNeeded = (number:number) => {
   return isSingleDigit ? `0${number}` : `${number}`;
 }
 export const activateJoinButton = (id:string,name:string,nickname:string,password:string) => {
-  if (id.length>=1 && name.length>=1 && nickname.length>=1 && password.length>=6) {
+  if (id.length>=1 && name.length>=1 && nickname.length>=1 && isValidPassword(password)) {
     return true
   }
   return false;
@@ -40,9 +41,11 @@ export const activateJoinButton = (id:string,name:string,nickname:string,passwor
 export const isValidPhoneOrEmail =  (input: string) => {
   return isValidPhoneNumber(input) && isValidEmail(input);
 }
+
 export const isValidName = (name:string) => {
   return (name.length>=1);
 }
+
 export const isValidId = (id:string) => {
   const regex = /^[a-zA-Z0-9_.]+$/;
 
@@ -51,18 +54,57 @@ export const isValidId = (id:string) => {
   }
   return false;
 }
+
+export const removeJwt = () => {
+  localStorage.removeItem(JWT_KEY);
+  localStorage.removeItem(ID_KEY);
+}
+
 export const isValidPassword = (password:string) => {
-  if(password.length>=6) {
+  if(password.length>=7) {
     return true;
   }
   return false;
 }
+
+export const truncateText = (text:string) => {
+  if (text.length > 10) {
+    return text.substring(0, 10) + '...';
+  } else {
+    return text;
+  }
+}
+
 export const isCanLogin = (id:string,password:string) => {
-  if(id.length>=1 && password.length>=6) {
+  if(id.length>=1 && password.length>=7) {
     return true;
   }
   return false;
 }
+
+export const timeForToday = (value:string) => {
+  const today = new Date();
+  const timeValue = new Date(value);
+
+  const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+  if (betweenTime < 1) return '방금전';
+  if (betweenTime < 60) {
+      return `${betweenTime}분전`;
+  }
+
+  const betweenTimeHour = Math.floor(betweenTime / 60);
+  if (betweenTimeHour < 24) {
+      return `${betweenTimeHour}시간전`;
+  }
+
+  const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+  if (betweenTimeDay < 365) {
+      return `${betweenTimeDay}일전`;
+  }
+
+  return `${Math.floor(betweenTimeDay / 365)}년전`;
+}
+
 export const years: number[] = [];
 for (let year = 2021; year >= 1919; year--) {
   years.push(year);

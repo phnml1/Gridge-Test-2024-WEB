@@ -22,7 +22,24 @@ body {
     flex-direction: column;
     align-items: center;
 }
+#root {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
 `;
+export const TextLgBold = css`
+//styleName: Text lg/Bold;
+font-family: SF Pro Display;
+font-size: 18px;
+font-weight: 700;
+line-height: 28px;
+letter-spacing: 0em;
+text-align: left;
+
+`
 export const TextLgSemibold = css`
   //styleName: Text lg/Semibold;
   font-family: SF Pro Display;
@@ -41,6 +58,32 @@ export const TextMdSemibold = css`
   letter-spacing: 0em;
   text-align: center;
 `;
+export const TextSmBold = css`
+//styleName: Text sm/Bold;
+font-family: SF Pro Display;
+font-size: 14px;
+font-weight: 700;
+line-height: 20px;
+letter-spacing: 0em;
+text-align: left;
+`;
+export const TextXsRegular = css`
+//styleName: Text xs/Regular;
+font-family: SF Pro Display;
+font-size: 12px;
+font-weight: 400;
+line-height: 18px;
+text-align: left;
+
+`
+export const TextXsMedium = css`//styleName: Text xs/Medium;
+font-family: SF Pro Display;
+font-size: 12px;
+font-weight: 500;
+line-height: 18px;
+letter-spacing: 0em;
+text-align: left;
+`;
 export const TextSmMedium = css`
   //styleName: Text sm/Medium;
   font-family: SF Pro Display;
@@ -50,7 +93,16 @@ export const TextSmMedium = css`
   letter-spacing: 0em;
   text-align: center;
 `;
+export const TextSmSemiBold = css`
+//styleName: Text sm/Semibold;
+font-family: SF Pro Display;
+font-size: 14px;
+font-weight: 600;
+line-height: 20px;
+letter-spacing: 0em;
+text-align: left;
 
+`
 export const TextSmRegular = css`
   //styleName: Text sm/Regular;
   font-family: SF Pro Display;

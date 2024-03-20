@@ -6,7 +6,7 @@ import Join from "./pages/join";
 const loading = <div>화면을 불러오는 중 입니다.</div>;
 
 // Containers
-const DefaultLayout = React.lazy(() => import("./layout/DefaultLayout"));
+const DefaultLayout = React.lazy(() => import("./pages/home"));
 
 // Pages
 const Login = React.lazy(() => import("./pages/login"));
@@ -23,7 +23,7 @@ const App = () => {
           <Route path="/sign-up" element={<Join/>}/>
           <Route path="/404" element={<Page404 />} />
           <Route path="/500" element={<Page500 />} />
-          <Route path="/*" element={<DefaultLayout />} />
+          <Route path="/" element={<DefaultLayout />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

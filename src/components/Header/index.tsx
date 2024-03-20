@@ -1,61 +1,45 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import packageJson from "../../../package.json";
-import { Button, Header, HeaderText, Wrap } from "./styles";
-
+import {Header,HeaderContent,HeaderLogo,HeaderWrap, Icon, IconBox, MaskIcon } from "./styles";
+import SearchBar from "./components/SearchBar";
+import logo from '../../assets/inobel-logo.png';
+import heart from '../../assets/heart.png';
+import home from '../../assets/home.png';
+import send from '../../assets/send.png';
+import plusSquare from '../../assets/plus-square.png';
+import maskGroup from '../../assets/mask-group.png';
+import Dropdown from "./components/Dropdown";
+import { useRecoilState } from "recoil";
+import { dropdownState } from "../../recoil/home";
 const AppHeader = () => {
-  const navigate = useNavigate();
 
   // const dispatch = useDispatch()
-  // const sidebarShow = useSelector((state) => state.sidebarShow)
+  const [sidebar, setSideBar] = useRecoilState<boolean>(dropdownState);
   // const [visible, setVisible] = useState(false)
-
   return (
+    <HeaderWrap>
     <Header>
-      <Wrap>
-        <svg width={30}>
-          <image href="../../assets/neordinary-logo.svg" />
-        </svg>
-        <HeaderText>
-          {process.env.REACT_APP_ENV !== "production" ? (
-            <>
-              REACT_APP_ENV : ${process.env.REACT_APP_ENV}
-              <br />
-              REACT_APP_API : ${process.env.REACT_APP_API}
-              <br />
-              프로젝트 : ${packageJson.name}
-              <br />
-              설명 : ${packageJson.description}
-              <br />
-              버전 : ${packageJson.version}
-            </>
-          ) : (
-            ""
-          )}
-        </HeaderText>
-      </Wrap>
-      <Wrap>
-        <Link to="/login">
-          <Button>로그아웃</Button>
-        </Link>
-        <Button
-          onClick={() => {
-            // replace true 는 뒤로가기시 이전 페이지로 안가짐
-            navigate("/dashboard", { replace: true });
-          }}
-        >
-          대시보드로 화면 전환
-        </Button>
-        <Button
-          onClick={() => {
-            // replace false (혹은 생략) 는 뒤로가기시 이전 페이지 가짐
-            navigate("/");
-          }}
-        >
-          홈
-        </Button>
-      </Wrap>
+      <HeaderLogo src={logo}></HeaderLogo>
+      <HeaderContent>
+        <SearchBar></SearchBar>
+        <IconBox>
+          <Icon src = {home}></Icon>
+          <Icon src = {send}></Icon>
+          <Icon src = {plusSquare}></Icon>
+          
+        <Icon src = {heart}></Icon>
+       
+          <MaskIcon src = {maskGroup} onClick={() => setSideBar((prev => !prev))}>
+          
+          </MaskIcon>
+          {(sidebar) &&
+        (
+          <Dropdown />
+        )}
+        </IconBox>
+        
+      </HeaderContent>
     </Header>
+    </HeaderWrap>
   );
 };
 
