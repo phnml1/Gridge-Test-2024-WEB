@@ -67,6 +67,15 @@ line-height: 20px;
 letter-spacing: 0em;
 text-align: left;
 `;
+export const TextXsRegular = css`
+//styleName: Text xs/Regular;
+font-family: SF Pro Display;
+font-size: 12px;
+font-weight: 400;
+line-height: 18px;
+text-align: left;
+
+`
 export const TextXsMedium = css`//styleName: Text xs/Medium;
 font-family: SF Pro Display;
 font-size: 12px;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   CommentWrap,
   Content,
@@ -19,7 +19,7 @@ import {
   Wrap,
 } from "./styles";
 import { useRecoilState } from "recoil";
-import { modalState } from "../../recoil/home";
+import { feedsState, modalState } from "../../recoil/home";
 import maskIcon from '../../assets/mask-group.png';
 import "swiper/css";
 import "swiper/css/navigation";
@@ -34,21 +34,27 @@ import ModalInfo from "./ModalInfo";
 import CommentInput from "./Input";
 // import Input from "./Input";
 const Modal = () => {
-  const [modal, setModal] = useRecoilState<FeedType|null>(modalState);
-  
+  const findIndex = (modal:number) => {
+    return feeds.findIndex((feed) => feed.id === modal);
+  }
+  const [modal, setModal] = useRecoilState<number>(modalState);
+  const [feeds] = useRecoilState<FeedType[]>(feedsState);
+  const [index,setIndex] = useState<number>(findIndex(modal));
+  console.log(feeds[index]);
+  useEffect(() => {setIndex(findIndex(modal))},[feeds,index,modal]);
   return (
     <Wrap>
       <OutSide
         onClick={() => {
-          setModal(null);
+          setModal(-1);
         }}
       ></OutSide>
-      {(modal !== null)&&(<ModalWrap>
+      {(modal !== -1)&&(<ModalWrap>
         <ModalBackground>
-            <ContentSwiper isModal={true} contents={modal.contentList} buttonpos={20} />
+            <ContentSwiper isModal={true} contents={feeds[index].contentList} buttonpos={20} />
         </ModalBackground>
         <ModalContent>
-          <ProFileWrap><ProFile><ProFileImg src={maskIcon}/><ProFileName>{modal.feedLoginId}</ProFileName></ProFile>
+          <ProFileWrap><ProFile><ProFileImg src={maskIcon}/><ProFileName>{feeds[index].feedLoginId}</ProFileName></ProFile>
           <More src={more}/>
           </ProFileWrap>
           <ContentAndComment>
@@ -57,16 +63,16 @@ const Modal = () => {
               <ProFileImg src={maskIcon}/>
           </ContentProFileWrap>
           <Contents>
-          <ProFileName>{modal.feedLoginId}</ProFileName>
-          <Content>{modal.feedText}</Content>
-          <Time>{timeForToday(modal.updatedAt)}</Time>
+          <ProFileName>{feeds[index].feedLoginId}</ProFileName>
+          <Content>{feeds[index].feedText}</Content>
+          <Time>{timeForToday(feeds[index].updatedAt)}</Time>
              
           </Contents>
           </ContentWrap>
-          <CommentWrap><Comments id = {modal.id} count = {modal.feedCommentCount}/></CommentWrap>
+          <CommentWrap><Comments id = {feeds[index].id} count = {feeds[index].feedCommentCount}/></CommentWrap>
           </ContentAndComment>
-          <ModalInfo date = {modal.updatedAt}/>
-          <CommentInput id = {modal.id}/>
+          <ModalInfo date = {feeds[index].updatedAt}/>
+          <CommentInput id = {feeds[index].id}/>
         </ModalContent>
              
       </ModalWrap>)}

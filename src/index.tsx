@@ -7,7 +7,6 @@ import { GlobalStyle } from "./components/styles";
 import { QueryClientProvider } from "react-query";
 import { queryClient } from "./react-query/queryClient";
 // 이외에 필요한 스타일 파일이 있다면 import 해주세요.
-
 ReactDOM.render(
   
   <StrictMode>
@@ -15,6 +14,7 @@ ReactDOM.render(
     <RecoilRoot>
       <GlobalStyle />
       <App />
+
     </RecoilRoot>
     </QueryClientProvider>
   </StrictMode>,

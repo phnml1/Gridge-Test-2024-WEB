@@ -8,9 +8,8 @@ import story1 from '../../assets/tempstory/story1.png';
 import story2 from '../../assets/tempstory/story2.png';
 import story3 from '../../assets/tempstory/story3.png';
 import story4 from '../../assets/tempstory/story4.png';
-import {request} from "../../apis/core";
 import { useRecoilState } from "recoil";
-import { feedsState, modalState } from "../../recoil/home";
+import { modalState } from "../../recoil/home";
 import Feeds from "../../components/Feeds";
 import Side from '../../components/home/Side';
 import Modal from "../../components/Modal";
@@ -19,11 +18,10 @@ import { JWT_KEY } from "../../config/constant";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
   // const [name] = useRecoilState(nameState);
-  const [jwt,setJwt] = useRecoilState(jwtState);
-  const [,setFeedsState] = useRecoilState(feedsState)
+  const [,setJwt] = useRecoilState(jwtState);
   const [modal] = useRecoilState(modalState);
   const jwtStorage = window.localStorage.getItem(JWT_KEY);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(()=> {
     if(jwtStorage) {
     setJwt(jwtStorage);
@@ -32,10 +30,6 @@ const Home = () => {
       navigate('/sign-in');
     }
   },[jwtStorage]) 
-  const handle = async () => {
-    const response = await request.get('/feeds',{params: {size:10,page:1}})
-    setFeedsState(response.data.result.feedList)
-  }
   useEffect(() => {
     if (modal!==-1) {
       document.body.style.overflow = 'hidden';
@@ -43,11 +37,6 @@ const Home = () => {
       document.body.style.overflow = 'auto';
     }
   },[modal]);
-  useEffect(() => {
-    if(jwt !== ''){
-    handle();
-    }
-  },[jwt])
   return (
     <DefaultLayout>
     <HomeRoot>
@@ -59,7 +48,8 @@ const Home = () => {
         </FeedsWrap>
         <Side/>
       </Wrap>
-      {modal !== -1 && <Modal />}
+      {modal!==-1 && <Modal />}
+      
     </HomeRoot>
 
     </DefaultLayout>

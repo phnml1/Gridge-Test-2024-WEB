@@ -6,6 +6,8 @@ import Feed from "./component/Feed";
 import { FeedType } from "../../types/types";
 import request from "../../apis/core";
 import { useInfiniteQuery, useQuery } from "react-query";
+import { useRecoilState } from "recoil";
+import { feedsState } from "../../recoil/home";
 const Document = async (pageParam:number) => {
   return (await request.get('/feeds', { params: { size:10, page:pageParam } })).data
 };
@@ -14,6 +16,7 @@ const getLastNumber = async () => {
 };
 const Feeds = () => {
   const [lastNumber, setLastNumber] = useState<number>(99999);
+  const [,setFeedsState] = useRecoilState<FeedType[]>(feedsState);
   useQuery({
     queryKey: ["lastNumber"],
     queryFn: () => getLastNumber(),
@@ -21,7 +24,7 @@ const Feeds = () => {
       setLastNumber(data?.result.lastPage);
     },
   });
-  const { data:feeds, refetch, hasNextPage, fetchNextPage  } =
+  const { data:feeds, hasNextPage, fetchNextPage  } =
     useInfiniteQuery(
       ["feeds"],
       ({ pageParam = lastNumber}) => Document(pageParam),
@@ -35,7 +38,12 @@ const Feeds = () => {
           },
           
     );
-    useEffect(()=>{refetch();},[lastNumber])
+    useEffect(()=>{
+      const newarr:FeedType[] = []
+      feeds?.pages.map((a) => {a.result.feedList.slice().reverse().map((data:FeedType) => newarr.push(data))})
+      setFeedsState(newarr);
+    },[feeds])
+
   return (
     <Wrap>
       {feeds && feeds.pages.length !== 0 ? (

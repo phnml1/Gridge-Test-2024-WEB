@@ -5,14 +5,21 @@ import { useAddComment } from "../../../../hooks/useAddComment";
 interface InputProps {
   id: number
 }
-const CommentInput = (props:InputProps) => {
-  const [value,setValue] = useState<string>('')
-  const {addComment} = useAddComment()
-  return (<Wrap>
-    <ProFile src={maskIcon}></ProFile>
-    <Input placeholder="댓글 달기" onChange={(e) => setValue(e.target.value)} value={value}/>
-    <Button value={value} onClick={() => {addComment({feedId:props.id,commentText:value})}}>게시</Button>
-  </Wrap>)
+const CommentInput = (props: InputProps) => {
+  const [value, setValue] = useState<string>('');
+  const { addComment } = useAddComment();
 
-}
+  const handleClick = () => {
+    addComment({ feedId: props.id, commentText: value });
+  };
+
+  return (
+    <Wrap>
+      <ProFile src={maskIcon}></ProFile>
+      <Input placeholder="댓글 달기" onChange={(e) => setValue(e.target.value)} value={value} />
+      <Button value={value} onClick={handleClick}>게시</Button>
+    </Wrap>
+  );
+};
+
 export default CommentInput;

@@ -140,8 +140,14 @@ cursor:pointer;
 export const FeedContentSumContent = styled.div`
   ${TextSmMedium}
   text-align: left;
-`
-export const Comment = styled.div`
+`;
+export const CommentWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top:20px;
+  `
+export const CommentButton = styled.div`
 ${TextSmMedium}
   color: #999999;
   margin-top: 5px;

@@ -28,7 +28,7 @@ const Root = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 1024px;
+  overflow: auto;
   background: #F6F6F6;
   align-items: center;
   @media (max-width: 1132px) {

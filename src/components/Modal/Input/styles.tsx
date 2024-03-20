@@ -25,10 +25,11 @@ export const Input = styled.input`
 
   }
 `;
-export const Button = styled.div`
+export const Button = styled.div<{value:string}>`
   ${TextSmBold};
   width: 30px;
   color: #2E90FA;
   height: 20px;
   cursor:pointer;
-`
+  color:${(props) => ((props.value.length<1)?'#B2DDFF':'#2E90FA')};
+`;

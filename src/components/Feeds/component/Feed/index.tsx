@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { ContentBackGround, ProFileName, ProFile, Wrap, More, Icons, ContentWrap, Indexes, Index, EmptyIndex, HeartComment, Icon, BookMark, Content, BoldContent, FeedContentSumContent, FeedText, FeedMoreButton, Comment, Time, CommentInputWrap } from "./styles"
-import { FeedType } from "../../../../types/types";
+import { ContentBackGround, ProFileName, ProFile, Wrap, More, Icons, ContentWrap, Indexes, Index, EmptyIndex, HeartComment, Icon, BookMark, Content, BoldContent, FeedContentSumContent, FeedText, FeedMoreButton, Time, CommentInputWrap, CommentButton, CommentWrap } from "./styles"
+import { CommentType, FeedType } from "../../../../types/types";
 import profile from '../../../../assets/mask-group.png'
 import more from '../../../../assets/more.png';
 import comment from '../../../../assets/message-circle.png';
@@ -9,20 +9,32 @@ import bookmark from '../../../../assets/bookmark.png';
 import { timeForToday, truncateText } from "../../../../utils/utility";
 import CommentInput from "../CommentInput";
 import { useRecoilState } from "recoil";
-import { modalState } from "../../../../recoil/home";
+import {modalState } from "../../../../recoil/home";
 import ContentSwiper from "../../../Swiper";
 import { useAddLike } from "../../../../hooks/useAddLike";
 import fillHeart from '../../../../assets/filled-heart.png'
+import { useQuery } from "react-query";
+import request from "../../../../apis/core";
+import Comment from "../Comment";
 interface FeedProps {
   feed:FeedType
 }
+const getComment = async (id:number,count:number) => {
+  const response = await request.get(`/feeds/${id}/comments`,{params:{
+    size:count,
+    page:1,
+  }});
+  return response.data.result.commentList
+};
 const Feed = (props:FeedProps) => {
   const [index,setIndex] = useState<number>(0)
   const [moreText,setMoreText] = useState(false);
-  useEffect(()=>{setMoreText(props.feed.feedText.length<=10)},[])
-  const [,setModal] = useRecoilState<FeedType|null>(modalState);
+
+  const [,setModal] = useRecoilState<number>(modalState);
   const {addLike} = useAddLike();
-  return (<Wrap>
+  const { data:commentData } = useQuery(['comment', props.feed.id,props.feed.feedCommentCount], () => getComment(props.feed.id,props.feed.feedCommentCount),{enabled:props.feed.feedCommentCount>0});
+  useEffect(()=>{setMoreText(props.feed.feedText.length<=10)},[])
+ return (<Wrap>
   <ContentBackGround>
     {/*profile 이미지는 받아올 방법이없어서 기본이미지로대체 */}
     <ProFile src = {profile}></ProFile>
@@ -52,16 +64,19 @@ const Feed = (props:FeedProps) => {
         <FeedText>
         <BoldContent>{props.feed.feedLoginId}</BoldContent>
         <FeedContentSumContent>{(moreText)?props.feed.feedText:truncateText(props.feed.feedText)}{!moreText && (<FeedMoreButton onClick={()=>{setMoreText(true)}}>더보기</FeedMoreButton>)}</FeedContentSumContent>
-
+        
         </FeedText>
-        <Comment onClick={() => {setModal(props.feed)}}>댓글 {props.feed.feedCommentCount}개 모두 보기</Comment>
         <Time>{timeForToday(props.feed.updatedAt)}</Time>
+        {(props.feed.feedCommentCount > 2)?(<CommentButton onClick={() => {setModal(props.feed.id)}}>댓글 {props.feed.feedCommentCount}개 모두 보기</CommentButton>): (
+            <CommentWrap>{commentData?.map((a:CommentType) => (<Comment key={a.id} id = {a.writeUserLoginId} text = {a.commentText} />))}</CommentWrap>
+        )}
+
       </Content>
       
   </ContentWrap>
   <CommentInputWrap>
   <CommentInput id = {props.feed.id}/>
       </CommentInputWrap>
-  </Wrap>)
+  </Wrap>);
 }
 export default Feed;

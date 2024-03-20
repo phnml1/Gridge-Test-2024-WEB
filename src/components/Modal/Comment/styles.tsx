@@ -5,7 +5,7 @@ export const Wrap = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 21px;
 `;
 
 export const Comment = styled.div`
