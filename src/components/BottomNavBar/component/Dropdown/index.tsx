@@ -6,7 +6,17 @@ import setting from '../../../../assets/settings.png';
 import alertCircle from '../../../../assets/alert-circle.png';
 import { useRecoilState } from "recoil";
 import { dropdownState } from "../../../../recoil/home";
+import { removeJwt } from "../../../../utils/utility";
+import { useNavigate } from "react-router-dom";
+
 const Dropdown = () => {
+  const navigate = useNavigate();
+  const logOut = () => {
+    if(confirm('로그아웃 하시겠습니까?')) {
+    removeJwt();
+    navigate('/login');
+    }
+  }
   const [,setSideBar] = useRecoilState(dropdownState);
   const handleOutsideClick = (e: MouseEvent) => {
     if (!e.target || !(e.target instanceof HTMLElement) || !e.target.closest('.dropdown')) {
@@ -38,7 +48,7 @@ const Dropdown = () => {
     </Item>
     <Item>
     <Icon src = {setting}></Icon>
-    <Text>로그아웃</Text>
+    <Text onClick = {() => logOut()}>로그아웃</Text>
     </Item>
   </Wrap>)
 }

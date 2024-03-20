@@ -16,7 +16,7 @@ export const request: AxiosInstance = axios.create({
 
   headers: {
     accept: "application/json",
-    Authorization: `Bearer ${window.localStorage.getItem(JWT_KEY)}`,
+    Authorization: `Bearer ${localStorage.getItem(JWT_KEY)}`,
   },
 });
 
