@@ -81,6 +81,25 @@ text-align: center;
 margin-top: 71px;
 cursor:pointer;
 `;
+export const CancelSubSribeButton = styled.div`
+  width: 320px;
+  height: 44px;
+  background: #F04438;
+  padding-left: 7.5px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+  font-family: SF Pro Display;
+font-size: 16px;
+font-weight: 700;
+line-height: 24px;
+text-align: center;
+margin-top: 71px;
+cursor:pointer;
+`;
 export const CheckTerms = styled.div`
 font-family: SF Pro Display;
 font-size: 14px;
