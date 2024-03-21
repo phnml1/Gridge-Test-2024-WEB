@@ -12,12 +12,12 @@ const Payment = () => {
   async function requestPay() {
   const response = await PortOne.requestPayment({
     // Store ID 설정 필요(보안상 push x)
-    storeId: "store-4d4ed090-1a5d-4a64-b4f5-08aab5977038",
+    storeId: "key",
     // 채널 키 설정 필요(보안상 push x)
-    channelKey: "channel-key-bee861ae-e214-4bcf-a287-65e06f549328",
+    channelKey: "key",
     paymentId: `payment-${crypto.randomUUID()}`,
     orderName: "inovel_구독",
-    totalAmount: 100,
+    totalAmount: 9900,
     currency: "CURRENCY_KRW",
     payMethod: "CARD",
     // 모바일 결제 역시 api가 없어서 임의로 가정
