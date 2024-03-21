@@ -3,14 +3,20 @@ import { ProfileWrap, ProfileImg, Wrap, ProfileContent, MyId, MyName, RecommandF
 import maskicon from '../../../assets/mask-group.png';
 import request from "../../../apis/core";
 import { ID_KEY } from "../../../config/constant";
+import { useRecoilState } from "recoil";
+import { nameState } from "../../../recoil/login";
 const Side = () => {
   const [id] = useState(localStorage.getItem(ID_KEY));
-  const [profile,setProFile] = useState({id:'',name:''})
+  const [profile,setProFile] = useState({id:'',name:''});
+  const [,setName] = useRecoilState(nameState);
   const handle = async () => {
     const response = await request.get(`/users/${id}/profile`)
     setProFile((prev)=>({...prev,id:response.data.result.loginId,name:response.data.result.realName}));
   }
   useEffect(()=> {handle()},[id])
+  useEffect(()=>{
+    setName(profile.id);
+  },[profile])
   return (<Wrap>
     <ProfileWrap>
       <ProfileImg src = {maskicon}/>

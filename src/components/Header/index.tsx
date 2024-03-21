@@ -5,15 +5,17 @@ import logo from '../../assets/inobel-logo.png';
 import heart from '../../assets/heart.png';
 import home from '../../assets/home.png';
 import send from '../../assets/send.png';
+
 import plusSquare from '../../assets/plus-square.png';
 import maskGroup from '../../assets/mask-group.png';
 import Dropdown from "./components/Dropdown";
 import { useRecoilState } from "recoil";
-import { dropdownState } from "../../recoil/home";
+import { dropdownState, writeModalState } from "../../recoil/home";
 const AppHeader = () => {
 
   // const dispatch = useDispatch()
   const [sidebar, setSideBar] = useRecoilState<boolean>(dropdownState);
+  const [,setWriteModal] = useRecoilState<boolean>(writeModalState);
   // const [visible, setVisible] = useState(false)
   return (
     <HeaderWrap>
@@ -24,7 +26,7 @@ const AppHeader = () => {
         <IconBox>
           <Icon src = {home}></Icon>
           <Icon src = {send}></Icon>
-          <Icon src = {plusSquare}></Icon>
+          <Icon src = {plusSquare} onClick={() => {setWriteModal(true)}}></Icon>
           
         <Icon src = {heart}></Icon>
        
