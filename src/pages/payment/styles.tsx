@@ -79,7 +79,7 @@ font-weight: 700;
 line-height: 24px;
 text-align: center;
 margin-top: 71px;
-
+cursor:pointer;
 `;
 export const CheckTerms = styled.div`
 font-family: SF Pro Display;
