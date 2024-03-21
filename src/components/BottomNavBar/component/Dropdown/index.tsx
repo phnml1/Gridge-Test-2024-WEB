@@ -47,8 +47,8 @@ const Dropdown = () => {
     <Text>문제 신고</Text>
     </Item>
     <Item>
-    <Icon src = {setting}></Icon>
-    <Text onClick = {() => logOut()}>로그아웃</Text>
+    <Icon onClick={() => logOut()} src = {setting}></Icon>
+    <Text>로그아웃</Text>
     </Item>
   </Wrap>)
 }
