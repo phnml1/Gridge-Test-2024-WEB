@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AppHeader from "../components/Header";
 import styled from "styled-components";
 import BottomNavBar from "../components/BottomNavBar";
+import { useRecoilState } from "recoil";
+import { modalState, writeModalState } from "../recoil/home";
+import Modal from "../components/Modal";
+import WriteModal from "../components/WriteModal";
 
 
 const DefaultLayout = ({ children }: React.PropsWithChildren) => {
+  const [modal] = useRecoilState(modalState);
+  const [writeModal] = useRecoilState(writeModalState);
+  useEffect(() => {
+    if (writeModal || modal!==-1) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  },[modal,writeModal]);
   /*const navigate = useNavigate()
 
   // 페이지 첫 로딩시 로직
@@ -20,6 +33,8 @@ const DefaultLayout = ({ children }: React.PropsWithChildren) => {
       <AppHeader />
       {children}
       <BottomNavBar/>
+      {modal!==-1 && <Modal />}
+      {writeModal && <WriteModal />}
     </Root>
   );
 };
