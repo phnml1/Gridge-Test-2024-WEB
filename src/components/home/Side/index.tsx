@@ -1,28 +1,25 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { ProfileWrap, ProfileImg, Wrap, ProfileContent, MyId, MyName, RecommandFriends, ShowAll, RecommandTitle, RecommandContents, RecommandContent, RecommandContentProFile, RecommandImg, FollowButton } from "./styles"
 import maskicon from '../../../assets/mask-group.png';
-import request from "../../../apis/core";
-import { ID_KEY } from "../../../config/constant";
-import { useRecoilState } from "recoil";
-import { nameState } from "../../../recoil/login";
+// import request from "../../../apis/core";
+// import { ID_KEY } from "../../../config/constant";
+import { useGetProFile } from "../../../hooks/useGetProFile";
+import { useNavigate } from "react-router-dom";
 const Side = () => {
-  const [id] = useState(localStorage.getItem(ID_KEY));
-  const [profile,setProFile] = useState({id:'',name:''});
-  const [,setName] = useRecoilState(nameState);
-  const handle = async () => {
-    const response = await request.get(`/users/${id}/profile`)
-    setProFile((prev)=>({...prev,id:response.data.result.loginId,name:response.data.result.realName}));
-  }
-  useEffect(()=> {handle()},[id])
+  // const [id] = useState(localStorage.getItem(ID_KEY));
+  const {profile,isError} = useGetProFile();
+  const navigate = useNavigate();
   useEffect(()=>{
-    setName(profile.id);
-  },[profile])
+  if(isError) {
+    alert('다시로그인해주세요');
+    navigate('/');
+  }},[isError]);
   return (<Wrap>
     <ProfileWrap>
       <ProfileImg src = {maskicon}/>
       <ProfileContent>
-        <MyId>{profile.id}</MyId>
-        <MyName>{profile.name}</MyName>
+        <MyId>{profile?.loginId}</MyId>
+        <MyName>{profile?.realName}</MyName>
       </ProfileContent>
       
     </ProfileWrap>

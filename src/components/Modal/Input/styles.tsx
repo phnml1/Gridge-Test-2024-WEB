@@ -30,6 +30,6 @@ export const Button = styled.div<{value:string}>`
   width: 30px;
   color: #2E90FA;
   height: 20px;
-  cursor:pointer;
+  ${(props) => ((props.value.length<1)?'':'cursor:pointer;')}
   color:${(props) => ((props.value.length<1)?'#B2DDFF':'#2E90FA')};
 `;

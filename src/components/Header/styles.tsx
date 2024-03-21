@@ -30,6 +30,7 @@ export const Header = styled.div`
 export const HeaderLogo = styled.img`
 width: 140px;
 height: 50px;
+cursor:pointer;
 `;
 export const HeaderContent = styled.div`
 display:flex;

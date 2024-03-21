@@ -11,8 +11,9 @@ import maskGroup from '../../assets/mask-group.png';
 import Dropdown from "./components/Dropdown";
 import { useRecoilState } from "recoil";
 import { dropdownState, writeModalState } from "../../recoil/home";
+import { useNavigate } from "react-router-dom";
 const AppHeader = () => {
-
+  const navigate = useNavigate();
   // const dispatch = useDispatch()
   const [sidebar, setSideBar] = useRecoilState<boolean>(dropdownState);
   const [,setWriteModal] = useRecoilState<boolean>(writeModalState);
@@ -20,11 +21,11 @@ const AppHeader = () => {
   return (
     <HeaderWrap>
     <Header>
-      <HeaderLogo src={logo}></HeaderLogo>
+      <HeaderLogo src={logo}  onClick={() => navigate('/')}></HeaderLogo>
       <HeaderContent>
         <SearchBar></SearchBar>
         <IconBox>
-          <Icon src = {home}></Icon>
+          <Icon src = {home} onClick={() => navigate('/')}></Icon>
           <Icon src = {send}></Icon>
           <Icon src = {plusSquare} onClick={() => {setWriteModal(true)}}></Icon>
           

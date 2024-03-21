@@ -31,15 +31,14 @@ body {
 }
 `;
 export const TextLgBold = css`
-//styleName: Text lg/Bold;
-font-family: SF Pro Display;
-font-size: 18px;
-font-weight: 700;
-line-height: 28px;
-letter-spacing: 0em;
-text-align: left;
-
-`
+  //styleName: Text lg/Bold;
+  font-family: SF Pro Display;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
+`;
 export const TextLgSemibold = css`
   //styleName: Text lg/Semibold;
   font-family: SF Pro Display;
@@ -59,30 +58,30 @@ export const TextMdSemibold = css`
   text-align: center;
 `;
 export const TextSmBold = css`
-//styleName: Text sm/Bold;
-font-family: SF Pro Display;
-font-size: 14px;
-font-weight: 700;
-line-height: 20px;
-letter-spacing: 0em;
-text-align: left;
+  //styleName: Text sm/Bold;
+  font-family: SF Pro Display;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
 `;
 export const TextXsRegular = css`
-//styleName: Text xs/Regular;
-font-family: SF Pro Display;
-font-size: 12px;
-font-weight: 400;
-line-height: 18px;
-text-align: left;
-
-`
-export const TextXsMedium = css`//styleName: Text xs/Medium;
-font-family: SF Pro Display;
-font-size: 12px;
-font-weight: 500;
-line-height: 18px;
-letter-spacing: 0em;
-text-align: left;
+  //styleName: Text xs/Regular;
+  font-family: SF Pro Display;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+`;
+export const TextXsMedium = css`
+  //styleName: Text xs/Medium;
+  font-family: SF Pro Display;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
 `;
 export const TextSmMedium = css`
   //styleName: Text sm/Medium;
@@ -94,15 +93,14 @@ export const TextSmMedium = css`
   text-align: center;
 `;
 export const TextSmSemiBold = css`
-//styleName: Text sm/Semibold;
-font-family: SF Pro Display;
-font-size: 14px;
-font-weight: 600;
-line-height: 20px;
-letter-spacing: 0em;
-text-align: left;
-
-`
+  //styleName: Text sm/Semibold;
+  font-family: SF Pro Display;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+`;
 export const TextSmRegular = css`
   //styleName: Text sm/Regular;
   font-family: SF Pro Display;
@@ -130,29 +128,43 @@ export const TextMdMedium = css`
   letter-spacing: 0em;
   text-align: left;
 `;
-export const TextLgMedium = css`
+export const TextMdBold = css`
+//styleName: Text md/Bold;
 font-family: SF Pro Display;
-font-size: 18px;
-font-weight: 500;
-line-height: 28px;
+font-size: 16px;
+font-weight: 700;
+line-height: 24px;
 text-align: left;
+`
+export const TextLgMedium = css`
+  font-family: SF Pro Display;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  text-align: left;
 `;
 export const TextXlSemiBold = css`
-//styleName: Text xl/Semibold;
-font-family: SF Pro Display;
-font-size: 20px;
-font-weight: 600;
-line-height: 30px;
-text-align: left;
-
+  //styleName: Text xl/Semibold;
+  font-family: SF Pro Display;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: left;
 `;
 
 export const DisplayXsMedium = css`
-//styleName: Display xs/Medium;
-font-family: SF Pro Display;
-font-size: 24px;
-font-weight: 500;
-line-height: 32px;
-text-align: left;
-
-`
+  //styleName: Display xs/Medium;
+  font-family: SF Pro Display;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  text-align: left;
+`;
+export const DisplaySmMedium = css`
+  //styleName: Display sm/Medium;
+  font-family: SF Pro Display;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 38px;
+  text-align: left;
+`;

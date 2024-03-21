@@ -42,6 +42,13 @@ const Modal = () => {
   const [index,setIndex] = useState<number>(findIndex(modal));
   console.log(feeds[index]);
   useEffect(() => {setIndex(findIndex(modal))},[feeds,index,modal]);
+  useEffect(() => {
+    if (modal!==-1) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  },[modal]);
   return (
     <Wrap>
       <OutSide

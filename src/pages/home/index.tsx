@@ -2,24 +2,17 @@ import React, { useEffect, useState } from "react";
 // import { useRecoilState } from "recoil";
 // import { jwtState, nameState } from "../../recoil/login";
 import { FeedsWrap, HomeRoot, Wrap } from "./styles";
-import DefaultLayout from "../../layout/DefaultLayout";
 import Storys from "../../components/Storys";
 import story1 from '../../assets/tempstory/story1.png';
 import story2 from '../../assets/tempstory/story2.png';
 import story3 from '../../assets/tempstory/story3.png';
 import story4 from '../../assets/tempstory/story4.png';
-import { useRecoilState } from "recoil";
-import { modalState, writeModalState } from "../../recoil/home";
 import Feeds from "../../components/Feeds";
 import Side from '../../components/home/Side';
-import Modal from "../../components/Modal";
 import { JWT_KEY } from "../../config/constant";
 import { useNavigate } from "react-router-dom";
-import WriteModal from "../../components/WriteModal";
 
 const Home = () => {
-  const [modal] = useRecoilState(modalState);
-  const [writeModal] = useRecoilState(writeModalState);
   const [jwt] = useState(localStorage.getItem(JWT_KEY));
   const navigate = useNavigate();
   useEffect(()=> {
@@ -28,15 +21,7 @@ const Home = () => {
       navigate('/login');
     }
   },[]) 
-  useEffect(() => {
-    if (modal!==-1 || writeModal) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  },[modal,writeModal]);
   return (
-    <DefaultLayout>
     <HomeRoot>
       <Wrap>
         <FeedsWrap>
@@ -46,11 +31,8 @@ const Home = () => {
         </FeedsWrap>
         <Side/>
       </Wrap>
-      {modal!==-1 && <Modal />}
-      {writeModal && <WriteModal />}
-    </HomeRoot>
 
-    </DefaultLayout>
+    </HomeRoot>
   );
 };
 

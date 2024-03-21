@@ -13,6 +13,6 @@ const CommentInput = (props: InputProps) => {
   // const handle = () => {
   //   addComment({feedId: props.id,commentText:value});
   // }
-  return (<Wrap><Input value = {value} onChange={(e) => setValue(e.target.value)} type="text"  placeholder="댓글 달기..."/><Button value = {value} onClick = {() => addComment({feedId: props.id,commentText:value})}>게시</Button></Wrap>)
+  return (<Wrap><Input value = {value} onChange={(e) => setValue(e.target.value)} type="text"  placeholder="댓글 달기..."/> {(value.length>0)? (<Button value = {value} onClick = {() => addComment({feedId: props.id,commentText:value})}>게시</Button>):(<Button value = {value}>게시</Button>)}</Wrap>)
 }
 export default CommentInput;

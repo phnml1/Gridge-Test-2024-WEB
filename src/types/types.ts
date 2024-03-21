@@ -26,3 +26,12 @@ export interface FeedContentListType {
 
 export interface CommentType {
   id: number; writeUserLoginId: string; commentText:string;}
+
+  export interface ProfileData{
+    id: number;
+    loginId: string;
+    realName:string;
+    followerCount: number;
+    followingCount: number;
+    feedCount: number;
+  }

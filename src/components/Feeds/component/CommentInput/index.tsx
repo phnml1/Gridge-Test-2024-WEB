@@ -24,7 +24,7 @@ const CommentInput = (props: InputProps) => {
     <Wrap>
       <ProFile src={maskIcon}></ProFile>
       <Input placeholder="댓글 달기" onChange={(e) => setValue(e.target.value)} value={value} />
-      <Button value={value} onClick={handleClick}>게시</Button>
+      {(value.length>0)? (<Button value={value} onClick={handleClick}>게시</Button>):(<Button value={value}>게시</Button>)}
     </Wrap>
   );
 };
