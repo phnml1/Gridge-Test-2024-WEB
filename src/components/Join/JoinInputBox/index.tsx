@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react"
-import { ErrorMessage, InputWrap, JoinButtonWrap, Logo, Or, ShareImage } from "./styles"
+import { ErrorMessage, InputWrap, JoinButtonWrap, KaKaoJoinMessage, Logo, Or, ShareImage } from "./styles"
 import KakaoButton from "../../Buttons/KakaoButton"
 import JoinInput from "../../Input/join";
 import LogoImage from "../../../assets/inobel-logo.png";
@@ -19,12 +19,15 @@ import { requestNotJwt } from "../../../apis/core";
 import React from "react";
 import { userInfo } from "../../../types/types";
 import { JoinButton } from "../styles";
+import { useNavigate } from "react-router-dom";
 interface JoinInputBoxProps {
   userInfo: userInfo;
   setUserInfo: React.Dispatch<React.SetStateAction<userInfo>>;
   setBoxTheme: React.Dispatch<React.SetStateAction<string>>;
+  kakao?: boolean
 }
 const JoinInputBox =  (props:JoinInputBoxProps) => {
+  const navigate = useNavigate();
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [id, setId] = useState<string>("");
@@ -80,11 +83,11 @@ const JoinInputBox =  (props:JoinInputBoxProps) => {
   },[clicked])
   return (
     <Fragment>
-    <Logo src={LogoImage}></Logo>
+    <Logo src={LogoImage} onClick={() => navigate('/')}></Logo>
           <ShareImage>친구들과 함께 여행 이야기를 공유하고 보세요.</ShareImage>
           <InputWrap>
-            <KakaoButton />
-            <Or>or</Or>
+            {!props.kakao && (<KakaoButton />)}
+            {props.kakao? (<KaKaoJoinMessage>카카오 회원가입</KaKaoJoinMessage>): (<Or>or</Or>)}
             <JoinInput
               image={mail}
               type="text"
