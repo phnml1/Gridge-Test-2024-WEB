@@ -61,6 +61,7 @@ export const ModalWrap = styled.div`
   display:flex;
   justify-content:center;
   max-width:1072px;
+  position: relative;
   @media (max-width:698px) {
     flex-direction: column;
     overflow: auto;

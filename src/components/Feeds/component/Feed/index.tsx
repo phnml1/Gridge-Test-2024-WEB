@@ -29,7 +29,6 @@ const getComment = async (id:number,count:number) => {
 const Feed = (props:FeedProps) => {
   const [index,setIndex] = useState<number>(0)
   const [moreText,setMoreText] = useState(false);
-
   const [,setModal] = useRecoilState<number>(modalState);
   const {addLike} = useAddLike();
   const { data:commentData } = useQuery(['comment', props.feed.id,props.feed.feedCommentCount], () => getComment(props.feed.id,props.feed.feedCommentCount),{enabled:props.feed.feedCommentCount>0});
@@ -39,7 +38,7 @@ const Feed = (props:FeedProps) => {
     {/*profile 이미지는 받아올 방법이없어서 기본이미지로대체 */}
     <ProFile src = {profile}></ProFile>
     <ProFileName>{props.feed.feedLoginId}</ProFileName>
-    <More src={more}></More>
+    <More onClick={() => {setModal(props.feed.id)}} src={more}></More>
    <ContentSwiper setIndex = {setIndex} buttonpos = {15} contents={props.feed.contentList}/>
   </ContentBackGround>
   <ContentWrap>

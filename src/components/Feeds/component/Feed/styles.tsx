@@ -9,6 +9,7 @@ export const Wrap = styled.div`
   border: 1px solid #CCCCCC;
 border-radius: 10px;
 overflow: hidden;
+position: relative;
 `
 export const ContentBackGround = styled.div`
   width: 100%;
@@ -47,6 +48,7 @@ right: 17px;
 width: 20px;
 height:20px;
 z-index:3;
+cursor: pointer;
 `;
 export const HeartComment = styled.div`
   display:flex;
