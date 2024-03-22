@@ -40,6 +40,19 @@ export const Or = styled.div`
   align-itmes: center;
 `;
 
+export const KaKaoJoinMessage = styled.div`
+  width: 100%;
+  height: 24px;
+  ${Font}
+  font-size:18px;
+  font-weight: 700;
+  color: #191919;
+  display: flex;
+  align-itmes: center;
+  justify-content: center;
+  margin-top: -15px;
+`;
+
 export const JoinButtonWrap = styled.div`
   width: 320px;
   margin-bottom: 39px;
