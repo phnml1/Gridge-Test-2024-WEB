@@ -1,10 +1,12 @@
 export interface userInfo {
+  accessToken?: string;
   loginId: string;
   password: string;
   realName: string;
   phone: string;
   birthDate: string;
 }
+
 export interface FeedType {
   id: number;
   feedLoginId: string;
