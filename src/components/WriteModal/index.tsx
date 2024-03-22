@@ -15,18 +15,12 @@ import { FeedContentListType } from "../../types/types";
 import Input from "./Input";
 import { useAddFeed } from "../../hooks/useAddFeed";
 const WriteModal = () => {
-  const [writeModal, setWriteModal] = useRecoilState(writeModalState);
+  const [, setWriteModal] = useRecoilState(writeModalState);
   const [imageUrls, setImageUrls] = useState<FeedContentListType[]>([]);
   const [step, setStep] = useState<string>("drag");
   const [feedText, setFeedText] = useState<string>('');
   const {addFeed,isSuccess} = useAddFeed();
-  useEffect(() => {
-    if (writeModal) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  },[writeModal]);
+
 const upload = async () => {
   const contentUrls = imageUrls.map(item => item.contentUrl);
   addFeed({feedText:feedText,contentUrls:contentUrls});    

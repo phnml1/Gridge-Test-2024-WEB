@@ -32,6 +32,7 @@ import { timeForToday } from "../../utils/utility";
 import Comments from "./Comment";
 import ModalInfo from "./ModalInfo";
 import CommentInput from "./Input";
+import MoreModal from "./MoreModal";
 // import Input from "./Input";
 const Modal = () => {
   const findIndex = (modal:number) => {
@@ -40,15 +41,9 @@ const Modal = () => {
   const [modal, setModal] = useRecoilState<number>(modalState);
   const [feeds] = useRecoilState<FeedType[]>(feedsState);
   const [index,setIndex] = useState<number>(findIndex(modal));
-  console.log(feeds[index]);
+  const [moreModal, setMoreModal] = useState<boolean>(false);
   useEffect(() => {setIndex(findIndex(modal))},[feeds,index,modal]);
-  useEffect(() => {
-    if (modal!==-1) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  },[modal]);
+
   return (
     <Wrap>
       <OutSide
@@ -62,7 +57,7 @@ const Modal = () => {
         </ModalBackground>
         <ModalContent>
           <ProFileWrap><ProFile><ProFileImg src={maskIcon}/><ProFileName>{feeds[index].feedLoginId}</ProFileName></ProFile>
-          <More src={more}/>
+          <More onClick = {() => {setMoreModal(true)}} src={more}/>
           </ProFileWrap>
           <ContentAndComment>
           <ContentWrap>
@@ -81,7 +76,7 @@ const Modal = () => {
           <ModalInfo date = {feeds[index].updatedAt}/>
           <CommentInput id = {feeds[index].id}/>
         </ModalContent>
-             
+        {moreModal&&(<MoreModal loginId = {feeds[index].feedLoginId} setMoreModal = {setMoreModal}/>)}
       </ModalWrap>)}
     </Wrap>
   );
