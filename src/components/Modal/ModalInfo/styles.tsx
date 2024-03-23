@@ -23,6 +23,7 @@ gap: 15px;
 export const HeartIcon = styled.img`
   width: 24px;
   height: 24px;
+  cursor:pointer;
 `;
 
 export const CommentIcon = styled.img`
@@ -32,6 +33,7 @@ export const CommentIcon = styled.img`
 export const BookMark = styled.img`
   width: 24px;
   height: 24px;
+  cursor:pointer;
 `;
 export const LikeWrap = styled.div`
   ${TextSmBold};

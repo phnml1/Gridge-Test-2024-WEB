@@ -73,7 +73,7 @@ const Modal = () => {
           </ContentWrap>
           <CommentWrap><Comments id = {feeds[index].id} count = {feeds[index].feedCommentCount}/></CommentWrap>
           </ContentAndComment>
-          <ModalInfo date = {feeds[index].updatedAt}/>
+          <ModalInfo isLiked={feeds[index].isLiked} isBookmarked = {feeds[index].isBookMarked} date = {feeds[index].updatedAt}/>
           <CommentInput id = {feeds[index].id}/>
         </ModalContent>
         {moreModal&&(<MoreModal loginId = {feeds[index].feedLoginId} setMoreModal = {setMoreModal}/>)}
