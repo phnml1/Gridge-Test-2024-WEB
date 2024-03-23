@@ -46,26 +46,25 @@ export const DropDown = styled.div`
   box-shadow: 0px 4px 6px -2px #10182808;
 
   box-shadow: 0px 12px 16px -4px #10182814;
-  overflow:auto;
+  overflow: auto;
 `;
 
 export const DropDownItem = styled.div`
-width: 100%;
-height: 44px;
-display: flex;
-gap: 8px;
-align-items: center;
-&:hover {
-  background: #F6F6F6;
-
-}
-`
+  width: 100%;
+  height: 44px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  &:hover {
+    background: #f6f6f6;
+  }
+`;
 export const DropDownItemContent = styled.div`
-width: 70px;
-height: 24px;
-${TextMdMedium};
-color: #101828;
-margin-left: 14px;
+  width: 70px;
+  height: 24px;
+  ${TextMdMedium};
+  color: #101828;
+  margin-left: 14px;
 `;
 export const DropDownCheck = styled.img`
   width: 20px;

@@ -46,8 +46,8 @@ const Dropdown = () => {
     <Icon src = {alertCircle}></Icon>
     <Text>문제 신고</Text>
     </Item>
-    <Item>
-    <Icon onClick={() => logOut()} src = {setting}></Icon>
+    <Item onClick={() => logOut()}>
+    <Icon  src = {setting}></Icon>
     <Text>로그아웃</Text>
     </Item>
   </Wrap>)

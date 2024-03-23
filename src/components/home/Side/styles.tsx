@@ -1,70 +1,73 @@
 import styled from "styled-components";
-import { TextLgBold, TextMdMedium, TextSmBold, TextSmMedium, TextSmSemiBold } from "../../styles";
+import {
+  TextLgBold,
+  TextMdMedium,
+  TextSmBold,
+  TextSmMedium,
+  TextSmSemiBold,
+} from "../../styles";
 
 export const Wrap = styled.div`
-  width:416px;
+  width: 416px;
   @media (max-width: 1000px) {
-    display:none;
-  }`;
-
+    display: none;
+  }
+`;
 
 export const ProfileWrap = styled.div`
-  display:flex;
+  display: flex;
   gap: 22px;
-  margin-top:55px;
-  `
+  margin-top: 55px;
+`;
 export const ProfileContent = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
   gap: 2px;
-  background: #F2F2F2;
+  background: #f2f2f2;
   border-radius: 100%;
-`
+`;
 export const ProfileImg = styled.img`
   width:80px;
   height: 80px;
   border
-`
+`;
 export const MyId = styled.div`
   ${TextLgBold}
   color: #191919;
-
-`
+`;
 export const MyName = styled.div`
   ${TextMdMedium};
-  color: #7F7F7F;
+  color: #7f7f7f;
 `;
 export const RecommandFriends = styled.div`
-  width:100%;
+  width: 100%;
   margin-top: 30px;
-  
-`
+`;
 export const RecommandTitle = styled.div`
-display: flex;
-justify-content: space-between;
-color: #7F7F7F;
-${TextSmSemiBold}
-`
+  display: flex;
+  justify-content: space-between;
+  color: #7f7f7f;
+  ${TextSmSemiBold}
+`;
 
 export const ShowAll = styled.div`
-color: #191919;
+  color: #191919;
 
-${TextSmBold}
+  ${TextSmBold}
 `;
 export const RecommandContents = styled.div`
-  margin-top:15px;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
-  gap:10px;
-
+  gap: 10px;
 `;
 export const RecommandContent = styled.div`
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 export const RecommandContentProFile = styled.div`
-display:flex;
+  display: flex;
   gap: 6px;
   ${TextSmMedium}
   color: #333333;
@@ -73,9 +76,9 @@ display:flex;
 export const RecommandImg = styled.img`
   width: 30px;
   height: 30px;
-`
+`;
 export const FollowButton = styled.div`
-  cursor:pointer;
-  color: #2E90FA;
+  cursor: pointer;
+  color: #2e90fa;
   ${TextSmBold};
-`
+`;

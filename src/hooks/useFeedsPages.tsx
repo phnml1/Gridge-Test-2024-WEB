@@ -1,6 +1,12 @@
-import { FetchNextPageOptions, InfiniteData, UseInfiniteQueryResult, useInfiniteQuery, useQuery } from 'react-query';
-import { request } from '../apis/core';
-import { FeedType } from '../types/types';
+import {
+  FetchNextPageOptions,
+  InfiniteData,
+  UseInfiniteQueryResult,
+  useInfiniteQuery,
+  useQuery,
+} from "react-query";
+import { request } from "../apis/core";
+import { FeedType } from "../types/types";
 // import { useRecoilState } from 'recoil';
 // import { lastPageState } from '../recoil/home';
 // import { useRecoilState } from 'recoil';
@@ -9,10 +15,10 @@ import { FeedType } from '../types/types';
 
 interface Result {
   result: {
-  feedList: FeedType[];
-  totalCount: number;
-  lastPage: number;
-  }
+    feedList: FeedType[];
+    totalCount: number;
+    lastPage: number;
+  };
 }
 
 export interface FeedsPagesData {
@@ -20,14 +26,18 @@ export interface FeedsPagesData {
   hasNextPage: boolean | undefined;
   isLoading: boolean;
   isFetchingNextPage: boolean;
-  fetchNextPage: (options?: FetchNextPageOptions) => Promise<UseInfiniteQueryResult>;
+  fetchNextPage: (
+    options?: FetchNextPageOptions
+  ) => Promise<UseInfiniteQueryResult>;
 }
 
-const Document = async (pageParam:number) => {
-  return (await request.get('/feeds', { params: { size:10, page:pageParam } })).data
+const Document = async (pageParam: number) => {
+  return (
+    await request.get("/feeds", { params: { size: 10, page: pageParam } })
+  ).data;
 };
 const getLastNumber = async () => {
-  return (await request.get('/feeds', { params: { size:10, page:1 } })).data
+  return (await request.get("/feeds", { params: { size: 10, page: 1 } })).data;
 };
 export async function useFeedsPages() {
   const { data: lastPage } = useQuery({
@@ -35,19 +45,23 @@ export async function useFeedsPages() {
     queryFn: () => getLastNumber(),
   });
   const lastNumber = lastPage?.data.result.lastPage;
-  const { data:feeds, hasNextPage, isLoading, isFetchingNextPage, fetchNextPage  } =
-    useInfiniteQuery(
-      ["feeds"],
-      ({ pageParam = lastNumber}) => Document(pageParam),
-      { 
-        getNextPageParam: (lastPage,allPages) =>
+  const {
+    data: feeds,
+    hasNextPage,
+    isLoading,
+    isFetchingNextPage,
+    fetchNextPage,
+  } = useInfiniteQuery(
+    ["feeds"],
+    ({ pageParam = lastNumber }) => Document(pageParam),
+    {
+      getNextPageParam: (lastPage, allPages) =>
         allPages.length !== lastPage.result.lastPage
-            ? lastNumber-1
-            : undefined,
-            enabled: !!lastNumber,
-          },
-          
-    );
+          ? lastNumber - 1
+          : undefined,
+      enabled: !!lastNumber,
+    }
+  );
 
   return { feeds, hasNextPage, isLoading, isFetchingNextPage, fetchNextPage };
 }

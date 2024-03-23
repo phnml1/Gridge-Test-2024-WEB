@@ -14,7 +14,7 @@ export const CheckBox = styled.img`
   z-index: 3;
 `;
 export const PassWordShowButton = styled.div`
-  height:24px;
+  height: 24px;
   text-align: center;
   font-family: SF Pro Display;
   font-size: 16px;
@@ -22,6 +22,6 @@ export const PassWordShowButton = styled.div`
   line-height: 24px;
   letter-spacing: 0em;
   color: #191919;
-  z-index:3;
-  cursor:pointer;
-`
+  z-index: 3;
+  cursor: pointer;
+`;

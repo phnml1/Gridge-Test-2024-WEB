@@ -5,7 +5,7 @@ import plusButton from '../../../../assets/plus-square.png';
 import xButton from '../../../../assets/x-circle.png';
 interface PlusMenuProps {
   contents: FeedContentListType[];
-  setFileInfo: React.Dispatch<SetStateAction<File>>;
+  setFileInfo: React.Dispatch<SetStateAction<{id:number,file:File}[]>>;
   handleFileInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   setImageUrls :React.Dispatch<SetStateAction<FeedContentListType[]>>;
   setPlusMenu : React.Dispatch<SetStateAction<boolean>>;
@@ -17,9 +17,11 @@ const PlusMenu = (props:PlusMenuProps) => {
   return (<Wrap>
     {props.contents.map((a) => <Content key={a.id}><Image src = {a.contentUrl} >
 
-    </Image><Xbutton onClick = {() => props.setImageUrls(prevUrls =>
+    </Image><Xbutton onClick = {() => {props.setImageUrls(prevUrls =>
     prevUrls.filter(item => item.id !== a.id)
-  )} src={xButton}/></Content>)}
+  )
+  props.setFileInfo(prev => prev.filter(item=>item.id !== a.id))
+  }} src={xButton}/></Content>)}
     {(props.contents.length<5)&&(<label htmlFor="fileInput">
     <Button src = {plusButton} />
     </label>)}

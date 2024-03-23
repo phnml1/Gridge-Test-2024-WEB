@@ -41,8 +41,11 @@ const ProFile = () => {
         <ProFileIntroduce>
           <div>{profile?.realName}</div>
           <ProFileIntroduceTheme>여행</ProFileIntroduceTheme>
-          <div>여행 다니는거 좋아해요<br/>
-세계를 돌아다닙니다</div>
+          <div>
+            여행 다니는거 좋아해요
+            <br />
+            세계를 돌아다닙니다
+          </div>
         </ProFileIntroduce>
       </ProFileContent>
     </ProFileWrap>

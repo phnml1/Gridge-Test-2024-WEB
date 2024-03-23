@@ -1,5 +1,11 @@
 import styled, { css } from "styled-components";
-import { supportDeviceSize } from "../../components/styles";
+import {
+  TextMdMedium,
+  TextMdRegular,
+  TextMdSemibold,
+  TextSmRegular,
+  supportDeviceSize,
+} from "../../components/styles";
 import iphones from "../../assets/Iphones-background.png";
 export const LoginRoot = styled.div`
   display: flex;
@@ -60,8 +66,7 @@ export const LoginButton = styled.div`
   width: 320px;
   padding: 10px 0;
   border-radius: 30px;
-  ${Font}
-  font-weight:600;
+  ${TextMdSemibold};
   text-align: center;
   color: #ffffff;
   cursor: pointer;
@@ -77,8 +82,7 @@ export const LoginDisable = styled.div`
   width: 320px;
   padding: 10px 0;
   border-radius: 30px;
-  ${Font}
-  font-weight:600;
+  ${TextMdSemibold}
   text-align: center;
   color: #ffffff;
   margin-top: 10px;
@@ -103,8 +107,8 @@ export const InputWrap = styled.div`
 export const Or = styled.div`
   width: 14px;
   height: 24px;
-  ${Font}
-  font-size:16px;
+  ${TextMdRegular};
+  font-size: 16px;
   color: #7f7f7f;
   display: flex;
   align-itmes: center;
@@ -123,14 +127,10 @@ export const LoginError = styled.div`
   line-height: 20px;
   letter-spacing: 0em;
   text-align: center;
-  color: #F04438;
-
+  color: #f04438;
 `;
 export const ForgetPassword = styled.div`
-  font-family: SF Pro Display;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
+  ${TextSmRegular};
   letter-spacing: 0em;
   text-align: center;
 
@@ -143,7 +143,7 @@ export const JoinBox = styled.div`
   height: 86px;
   box-sizing: border-box;
   border: 1px solid #cccccc;
-  ${Font}
+  ${TextMdSemibold};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -158,8 +158,7 @@ export const JoinButton = styled.div`
 `;
 export const AppGuideMessage = styled.div`
   //styleName: Text md/Medium;
-  ${Font}
-  font-weight: 500;
+  ${TextMdMedium};
   text-align: center;
   margin-top: 10px;
   color: #7f7f7f;

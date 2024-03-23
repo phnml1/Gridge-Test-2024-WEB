@@ -4,7 +4,7 @@ export const HomeRoot = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: #F6F6F6;
+  background: #f6f6f6;
   @media all and (max-width: 1000px) {
     width: 100%;
   }
@@ -20,9 +20,9 @@ export const Wrap = styled.div`
 `;
 export const FeedsWrap = styled.div`
   width: 520px;
-  margin-top:30px;
+  margin-top: 30px;
   @media (min-width: 1001px) {
-    margin-left:88px;
+    margin-left: 88px;
   }
   display: flex;
   flex-direction: column;
@@ -31,8 +31,6 @@ export const FeedsWrap = styled.div`
     align-items: center;
   }
 `;
-
-
 
 export const Profile = styled.div`
   width: 80px;
