@@ -1,5 +1,11 @@
 import styled, { css } from "styled-components";
-import { TextMdMedium, TextMdRegular, TextMdSemibold, TextSmRegular, supportDeviceSize } from "../../components/styles";
+import {
+  TextMdMedium,
+  TextMdRegular,
+  TextMdSemibold,
+  TextSmRegular,
+  supportDeviceSize,
+} from "../../components/styles";
 import iphones from "../../assets/Iphones-background.png";
 export const LoginRoot = styled.div`
   display: flex;
@@ -102,7 +108,7 @@ export const Or = styled.div`
   width: 14px;
   height: 24px;
   ${TextMdRegular};
-  font-size:16px;
+  font-size: 16px;
   color: #7f7f7f;
   display: flex;
   align-itmes: center;
@@ -121,8 +127,7 @@ export const LoginError = styled.div`
   line-height: 20px;
   letter-spacing: 0em;
   text-align: center;
-  color: #F04438;
-
+  color: #f04438;
 `;
 export const ForgetPassword = styled.div`
   ${TextSmRegular};

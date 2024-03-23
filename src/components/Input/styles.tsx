@@ -6,16 +6,16 @@ export const Wrap = styled.div<{ width: string }>`
   height: calc(50px - 27.6px);
   width: calc(${(props) => (props.width ? props.width : "100%")} - 29.6px);
   padding: 13px 14px;
-  margin:0;
-  position:relative;
+  margin: 0;
+  position: relative;
 `;
 export const InputWrap = styled.div`
-  height:24px;
+  height: 24px;
   display: flex;
   gap: 8px;
   align-items: center;
   position: relative;
-`
+`;
 export const InputImage = styled.img`
   width: 20px;
   height: 20px;
@@ -31,14 +31,14 @@ export const TextInput = styled.input`
   letter-spacing: 0em;
   text-align: left;
   color: #344054;
-  z-index:2;
+  z-index: 2;
   &::-ms-reveal,
   &::-ms-clear {
     display: none;
   }
 `;
 export const PassWordShowButton = styled.div`
-  height:24px;
+  height: 24px;
   text-align: center;
   font-family: SF Pro Display;
   font-size: 16px;
@@ -48,6 +48,6 @@ export const PassWordShowButton = styled.div`
   color: #191919;
   right: 0;
   position: absolute;
-  z-index:3;
-  cursor:pointer;
-`
+  z-index: 3;
+  cursor: pointer;
+`;

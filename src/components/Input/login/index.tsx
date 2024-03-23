@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import {Wrap,
+import {
+  Wrap,
   InputImage,
   TextInput,
-  InputWrap,PassWordShowButton,} from '../styles';
+  InputWrap,
+  PassWordShowButton,
+} from "../styles";
 
 interface LoginInputsProps {
   image: string;
@@ -30,7 +33,8 @@ const LoginInput = (props: LoginInputsProps) => {
           }}
           placeholder={props.placeholder}
         />
-        {props.type == "password" && props.value.length >= 1 &&
+        {props.type == "password" &&
+          props.value.length >= 1 &&
           (showPassword ? (
             <PassWordShowButton
               onClick={() => {

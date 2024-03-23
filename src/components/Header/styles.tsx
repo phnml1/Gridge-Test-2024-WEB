@@ -8,9 +8,8 @@ export const HeaderWrap = styled.div`
   height: 80px;
   display: flex;
   justify-content: center;
-  background: #FFFFFF;
-  border-bottom: 1px solid #CCCCCC
- 
+  background: #ffffff;
+  border-bottom: 1px solid #cccccc;
 `;
 export const Header = styled.div`
   display: flex;
@@ -20,24 +19,24 @@ export const Header = styled.div`
   @media (max-width: 1132px) {
     width: 100%;
   }
-  background: #FFFFFF;
-  
+  background: #ffffff;
+
   height: 80px;
   padding: 0 30px;
   align-items: center;
 `;
 
 export const HeaderLogo = styled.img`
-width: 140px;
-height: 50px;
-cursor:pointer;
+  width: 140px;
+  height: 50px;
+  cursor: pointer;
 `;
 export const HeaderContent = styled.div`
-display:flex;
-justify-content:space-between;
-align-items: center;
-gap: 101px;
-`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 101px;
+`;
 export const HeaderText = styled.p`
   font-size: 1.2rem;
   font-weight: 600;
@@ -59,21 +58,21 @@ export const Button = styled.div`
 `;
 
 export const IconBox = styled.div`
-  display:flex;
+  display: flex;
   gap: 20px;
   @media (max-width: 1000px) {
-    display:none
+    display: none;
   }
-  position:relative;
+  position: relative;
   align-items: center;
 `;
 export const Icon = styled.img`
   width: 24px;
   height: 24px;
-  cursor:pointer;
-`
+  cursor: pointer;
+`;
 export const MaskIcon = styled.img`
   width: 35px;
   height: 35px;
-  cursor:pointer;
-`
+  cursor: pointer;
+`;

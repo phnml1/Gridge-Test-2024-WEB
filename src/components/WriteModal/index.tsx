@@ -16,55 +16,59 @@ import { useAddFeed } from "../../hooks/useAddFeed";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { app } from "../../firebase";
 import { randomString } from "../../utils/utility";
+import { FileInfo } from "../../types/types";
 
 const WriteModal = () => {
   const [, setWriteModal] = useRecoilState(writeModalState);
-  const [contentUrls,setContentUrls] = useState<string[]>([]);
+  const [contentUrls, setContentUrls] = useState<string[]>([]);
   const [step, setStep] = useState<string>("drag");
-  const [feedText, setFeedText] = useState<string>('');
-  const {addFeed,isSuccess} = useAddFeed();
-  const [fileInfos,setFileInfos] = useState<{id:number,file:File}[]>([]);
-const upload = async () => {
-  const storage = getStorage(app);
-  const storageRef = ref(storage,`images/${randomString(10)}`);
+  const [feedText, setFeedText] = useState<string>("");
+  const { addFeed, isSuccess } = useAddFeed();
+  const [fileInfos, setFileInfos] = useState<FileInfo[]>([]);
+  const upload = async () => {
+    const storage = getStorage(app);
+    const storageRef = ref(storage, `images/${randomString(10)}`);
 
-  fileInfos.map((item) => {
-  uploadBytes(storageRef, item.file).then((snapshot) => {
-    getDownloadURL(snapshot.ref).then((url) => {
-      setContentUrls(prev => [...prev,url])
-  });
-  });
-})
-
-   
-}
-  useEffect(()=>{
-    if(contentUrls.length>=1){
-      addFeed({feedText:feedText,contentUrls:contentUrls});  
+    fileInfos.map((item) => {
+      uploadBytes(storageRef, item.file).then((snapshot) => {
+        getDownloadURL(snapshot.ref).then((url) => {
+          setContentUrls((prev) => [...prev, url]);
+        });
+      });
+    });
+  };
+  useEffect(() => {
+    if (contentUrls.length >= 1) {
+      addFeed({ feedText: feedText, contentUrls: contentUrls });
     }
-  },[contentUrls])
-  useEffect(()=> {
-    if(fileInfos.length===0) {
-      setStep('drag');
+  }, [contentUrls]);
+  useEffect(() => {
+    if (fileInfos.length === 0) {
+      setStep("drag");
     }
-  },[fileInfos]);
-  useEffect(()=>{
-    if(isSuccess) {
+  }, [fileInfos]);
+  useEffect(() => {
+    if (isSuccess) {
       setWriteModal(false);
-      }
-  },[isSuccess])
+    }
+  }, [isSuccess]);
 
   return (
     <Wrap>
       <OutSide onClick={() => setWriteModal(false)}></OutSide>
-      <Modal step = {step}>
+      <Modal step={step}>
         <ModalTitle>
-          새 게시물 만들기{step === 'drag' && fileInfos.length > 0 && <Next onClick={()=>setStep('content')}>다음</Next>}
-          {step === 'content'&& fileInfos.length > 0 && <Next onClick={()=>upload()}>공유</Next>}
+          새 게시물 만들기
+          {step === "drag" && fileInfos.length > 0 && (
+            <Next onClick={() => setStep("content")}>다음</Next>
+          )}
+          {step === "content" && fileInfos.length > 0 && (
+            <Next onClick={() => upload()}>공유</Next>
+          )}
         </ModalTitle>
-        <ModalContentWrap step = {step}>
-          <DragDrop fileInfos={fileInfos} setFileInfos={setFileInfos}/>
-          {(step === 'content')&&(<Input setFeedText = {setFeedText}/>)}
+        <ModalContentWrap step={step}>
+          <DragDrop fileInfos={fileInfos} setFileInfos={setFileInfos} />
+          {step === "content" && <Input setFeedText={setFeedText} />}
         </ModalContentWrap>
       </Modal>
     </Wrap>

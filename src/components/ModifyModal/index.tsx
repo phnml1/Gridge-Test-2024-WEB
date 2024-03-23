@@ -4,7 +4,6 @@ import {
   OutSide,
   Modal,
   ModalTitle,
-  // ModalContent,
   ModalContentWrap,
   Next,
 } from "./styles";
@@ -19,41 +18,51 @@ const ModifyModal = () => {
   const [modifyModal, setModifyModal] = useRecoilState(modifyModalState);
   const [imageUrls, setImageUrls] = useState<FeedContentListType[]>([]);
   const [step, setStep] = useState<string>("content");
-  const [feedText, setFeedText] = useState<string>('');
+  const [feedText, setFeedText] = useState<string>("");
   console.log(feedText);
-  const {modifyFeed, isSuccess} = useModifyFeed();
-  const findIndex = (modal:number) => {
+  const { modifyFeed, isSuccess } = useModifyFeed();
+  const findIndex = (modal: number) => {
     return feeds.findIndex((feed) => feed.id === modal);
-  }
-  useEffect(()=> {
+  };
+  useEffect(() => {
     const index = findIndex(modifyModal);
     setImageUrls(feeds[index].contentList);
     setFeedText(feeds[index].feedText);
-  },[])
-  useEffect(()=> {
-    if(imageUrls.length==0) {
-      setStep('drag');
+  }, []);
+  useEffect(() => {
+    if (imageUrls.length == 0) {
+      setStep("drag");
     } else {
-      setStep('content');
+      setStep("content");
     }
-  },[imageUrls]);
-  useEffect(()=>{
-    if(isSuccess){
+  }, [imageUrls]);
+  useEffect(() => {
+    if (isSuccess) {
       setModifyModal(-1);
     }
-  },[isSuccess])
+  }, [isSuccess]);
 
   return (
     <Wrap>
       <OutSide onClick={() => setModifyModal(-1)}></OutSide>
-      <Modal step = {step}>
+      <Modal step={step}>
         <ModalTitle>
           정보수정
-          {step === 'content'&& imageUrls.length > 0 && <Next onClick={()=> modifyFeed({id:modifyModal,feedText:feedText})}>완료</Next>}
+          {step === "content" && imageUrls.length > 0 && (
+            <Next
+              onClick={() =>
+                modifyFeed({ id: modifyModal, feedText: feedText })
+              }
+            >
+              완료
+            </Next>
+          )}
         </ModalTitle>
-        <ModalContentWrap step = {step}>
-          <Images imageUrls = {imageUrls}/>
-          {(step === 'content')&&(<Input feedText = {feedText} setFeedText = {setFeedText}/>)}
+        <ModalContentWrap step={step}>
+          <Images imageUrls={imageUrls} />
+          {step === "content" && (
+            <Input feedText={feedText} setFeedText={setFeedText} />
+          )}
         </ModalContentWrap>
       </Modal>
     </Wrap>

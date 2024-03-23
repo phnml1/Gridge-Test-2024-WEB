@@ -22,18 +22,26 @@ export interface FeedType {
   }[];
 }
 export interface FeedContentListType {
-    id: number;
-    contentUrl: string;
+  id: number;
+  contentUrl: string;
 }
 
 export interface CommentType {
-  id: number; writeUserLoginId: string; commentText:string;}
+  id: number;
+  writeUserLoginId: string;
+  commentText: string;
+}
 
-  export interface ProfileData{
-    id: number;
-    loginId: string;
-    realName:string;
-    followerCount: number;
-    followingCount: number;
-    feedCount: number;
-  }
+export interface ProfileData {
+  id: number;
+  loginId: string;
+  realName: string;
+  followerCount: number;
+  followingCount: number;
+  feedCount: number;
+}
+
+export interface FileInfo {
+  id: number;
+  file: File;
+}

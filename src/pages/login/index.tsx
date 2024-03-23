@@ -37,48 +37,46 @@ import { JWT_KEY } from "../../config/constant";
 const Login = () => {
   const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [canLogin,setCanLogin] = useState<boolean>(false);
-  const [loginsuccess,setloginSuccess] = useState<string>('');
+  const [canLogin, setCanLogin] = useState<boolean>(false);
+  const [loginsuccess, setloginSuccess] = useState<string>("");
   const navigate = useNavigate();
   useEffect(() => {
-    setCanLogin(isCanLogin(id,password));
-    setloginSuccess('');
-  },[id,password])
+    setCanLogin(isCanLogin(id, password));
+    setloginSuccess("");
+  }, [id, password]);
   const [, setName] = useRecoilState(nameState);
   const [, setJwt] = useRecoilState(jwtState);
-    // 로그인 버튼 클릭
-    const handleLogin = async () => {
-      try {
-        if (id.length === 0) {
-          alert("이름을 입력해 주세요.");
-          return;
-        }
-        if (!isValidPassword(password)) {
-          alert('비밀번호는 7자리 이상을 입력해야 합니다.')
-        }
-  
-       const response = await requestNotJwt.post(`/auth/sign-in`,{
-        "loginId":`${id}`,
-        "password": `${password}`,
-      })
-      window.localStorage.setItem(JWT_KEY,response.data.result.jwt);
-      window.localStorage.setItem('loginId',id);
-        setJwt(response.data.result.jwt);
-        setName(response.data.result.id);
-        window.location.replace('/');
-      } catch (error) {
-        setloginSuccess('아이디나 비밀번호가 틀렸습니다.')
-       
-      }
-    };
-    const onKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
-      const key = event.key || event.keyCode;
-      if (canLogin && (key === "Enter" || key === 13)) {
-        handleLogin().then();
-      }
-    };
-  
 
+  // 로그인 버튼 클릭
+  const handleLogin = async () => {
+    try {
+      if (id.length === 0) {
+        alert("이름을 입력해 주세요.");
+        return;
+      }
+      if (!isValidPassword(password)) {
+        alert("비밀번호는 7자리 이상을 입력해야 합니다.");
+      }
+
+      const response = await requestNotJwt.post(`/auth/sign-in`, {
+        loginId: `${id}`,
+        password: `${password}`,
+      });
+      window.localStorage.setItem(JWT_KEY, response.data.result.jwt);
+      window.localStorage.setItem("loginId", id);
+      setJwt(response.data.result.jwt);
+      setName(response.data.result.id);
+      window.location.replace("/");
+    } catch (error) {
+      setloginSuccess("아이디나 비밀번호가 틀렸습니다.");
+    }
+  };
+  const onKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
+    const key = event.key || event.keyCode;
+    if (canLogin && (key === "Enter" || key === 13)) {
+      handleLogin().then();
+    }
+  };
 
   return (
     <LoginRoot>
@@ -103,26 +101,30 @@ const Login = () => {
                 setValue={setPassword}
                 onKeyUp={onKeyUp}
               />
-              {
-                canLogin?(
-              <LoginButton onClick={handleLogin}>로그인</LoginButton>
-                ): (<LoginDisable>로그인</LoginDisable>)
-              }
+              {canLogin ? (
+                <LoginButton onClick={handleLogin}>로그인</LoginButton>
+              ) : (
+                <LoginDisable>로그인</LoginDisable>
+              )}
               <Or>or</Or>
-              <KakaoButton/>
+              <KakaoButton />
               <LoginErrorWrap>
-                {(loginsuccess.length>=1) && (
-                <LoginError>{loginsuccess}</LoginError>
-                )
-                }
+                {loginsuccess.length >= 1 && (
+                  <LoginError>{loginsuccess}</LoginError>
+                )}
                 <ForgetPassword>비밀번호를 잊으셨나요?</ForgetPassword>
-                </LoginErrorWrap>
+              </LoginErrorWrap>
             </InputWrap>
           </LoginBox>
           <JoinBox>
             계정이 없으신가요?
-
-            <JoinButton onClick={() => {navigate('/sign-up')}}>가입하기</JoinButton>
+            <JoinButton
+              onClick={() => {
+                navigate("/sign-up");
+              }}
+            >
+              가입하기
+            </JoinButton>
           </JoinBox>
           <AppGuideMessage>앱을 다운로드 하세요.</AppGuideMessage>
           <AppDownLoad>

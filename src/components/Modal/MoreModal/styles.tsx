@@ -1,25 +1,30 @@
 import styled from "styled-components";
-import { TextMdMedium, TextMdSemibold, TextSmMedium, TextSmSemiBold } from "../../styles";
+import {
+  TextMdMedium,
+  TextMdSemibold,
+  TextSmMedium,
+  TextSmSemiBold,
+} from "../../styles";
 
 export const Wrap = styled.div`
   position: absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: #00000066;
-  z-index:3;
+  z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding:50px;
-  `;
+  padding: 50px;
+`;
 export const Outside = styled.div`
-position: absolute;
-top:0;
-left:0;
-right:0;
-bottom:0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 5;
 `;
 export const ModalWrap = styled.div`
@@ -36,29 +41,29 @@ export const ModalWrap = styled.div`
 export const Item = styled.div`
   width: 100%;
   height: calc(100% / 9);
-  border-top: 1px solid #CCCCCC;
+  border-top: 1px solid #cccccc;
   ${TextSmMedium};
-  color: '#191919';
+  color: "#191919";
   justify-content: center;
   align-items: center;
   display: flex;
   box-sizing: border-box;
-  cursor:pointer;
-`
+  cursor: pointer;
+`;
 
 export const ItemDelete = styled.div`
   width: 100%;
   height: calc(100% / 9);
   ${TextSmSemiBold};
-  color: #F04438;
+  color: #f04438;
   justify-content: center;
   align-items: center;
   display: flex;
   box-sizing: border-box;
-  cursor:pointer;
+  cursor: pointer;
 `;
 export const DeleteModalWrap = styled.div`
-max-width: 448px;
+  max-width: 448px;
   width: 100%;
   height: 223px;
   background: white;
@@ -68,18 +73,17 @@ max-width: 448px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
 `;
 export const Question = styled.div`
- ${TextMdSemibold}
- color: #191919;
- margin-top: 40px;
+  ${TextMdSemibold}
+  color: #191919;
+  margin-top: 40px;
 `;
 export const ThisQuestion = styled.div`
   ${TextMdMedium};
-  color: #7F7F7F;
+  color: #7f7f7f;
   margin-top: 5px;
-`
+`;
 export const DeleteModalButtonWrap = styled.div`
   margin-top: 30px;
   width: 100%;
@@ -87,24 +91,24 @@ export const DeleteModalButtonWrap = styled.div`
 export const DeleteModalItemDelete = styled.div`
   width: 100%;
   height: 50px;
-  border-top: 1px solid #CCCCCC;
+  border-top: 1px solid #cccccc;
   ${TextSmSemiBold};
-  color: #F04438;
+  color: #f04438;
   justify-content: center;
   align-items: center;
   display: flex;
   box-sizing: border-box;
-  cursor:pointer;
+  cursor: pointer;
 `;
 export const DeleteModalItem = styled.div`
   width: 100%;
   height: 50px;
-  border-top: 1px solid #CCCCCC;
+  border-top: 1px solid #cccccc;
   ${TextSmMedium};
-  color: '#191919';
+  color: "#191919";
   justify-content: center;
   align-items: center;
   display: flex;
   box-sizing: border-box;
-  cursor:pointer;
-`
+  cursor: pointer;
+`;

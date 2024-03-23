@@ -9,9 +9,9 @@ export const Wrap = styled.div`
 `;
 
 export const Comment = styled.div`
-  width:100%;
+  width: 100%;
   display: flex;
-  gap:10px;
+  gap: 10px;
 `;
 export const ProFile = styled.img`
   width: 35px;
@@ -19,11 +19,11 @@ export const ProFile = styled.img`
   border-raidus: 100%;
 `;
 export const Content = styled.div`
-width:100%;
-${TextSmMedium};
-text-align: left;
+  width: 100%;
+  ${TextSmMedium};
+  text-align: left;
 `;
 export const HeartComment = styled.div`
-  display:flex;
+  display: flex;
   gap: 15px;
-`
+`;

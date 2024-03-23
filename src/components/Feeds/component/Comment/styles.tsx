@@ -14,25 +14,24 @@ export const ProFile = styled.img`
 export const ContentWrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap:3px;
-`
+  gap: 3px;
+`;
 export const Content = styled.div`
- 
   color: #191919;
   display: flex;
   align-center: center;
-  height:20px;
+  height: 20px;
 `;
 export const NickName = styled.div`
-${TextSmSemiBold};
-display: flex;
+  ${TextSmSemiBold};
+  display: flex;
   align-center: center;
-`
+`;
 export const Text = styled.div`
-${TextSmMedium};
-display: flex;
+  ${TextSmMedium};
+  display: flex;
   align-center: center;
 `;
 export const Date = styled.div`
   ${TextXsRegular}
-`
+`;

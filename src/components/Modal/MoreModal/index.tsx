@@ -57,12 +57,11 @@ const MoreModal = (props: MoreModalProps) => {
           </ItemDelete>
           <Item
             onClick={() => {
-              if(props.loginId === myId) {
-              setModifyModal(modal);
-              setModal(-1);
-              }
-              else {
-                alert('본인이 올린 게시글만 수정가능합니다.');
+              if (props.loginId === myId) {
+                setModifyModal(modal);
+                setModal(-1);
+              } else {
+                alert("본인이 올린 게시글만 수정가능합니다.");
               }
             }}
           >

@@ -25,8 +25,8 @@ export const InputWrap = styled.div`
 export const Or = styled.div`
   width: 14px;
   height: 24px;
- ${TextMdRegular};
-  font-size:16px;
+  ${TextMdRegular};
+  font-size: 16px;
   color: #7f7f7f;
   display: flex;
   align-itmes: center;
@@ -36,7 +36,7 @@ export const KaKaoJoinMessage = styled.div`
   width: 100%;
   height: 24px;
   font-family: SF Pro Display;
-  font-size:18px;
+  font-size: 18px;
   font-weight: 700;
   color: #191919;
   display: flex;
@@ -48,20 +48,19 @@ export const KaKaoJoinMessage = styled.div`
 export const JoinButtonWrap = styled.div`
   width: 320px;
   margin-bottom: 39px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  gap:10px;
-  margin-top:10px;
+  gap: 10px;
+  margin-top: 10px;
 `;
 export const ErrorMessage = styled.div`
-  width:100%;
+  width: 100%;
   font-family: SF Pro Display;
-font-size: 16px;
-font-weight: 600;
-line-height: 19px;
-letter-spacing: 0em;
-text-align: center;
-color: #F04438;
-
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #f04438;
 `;

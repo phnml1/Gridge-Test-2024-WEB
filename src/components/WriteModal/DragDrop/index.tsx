@@ -16,23 +16,22 @@ import PlusMenu from "./PlusMenu";
 // import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 // import { app } from "../../../firebase";
 // import { randomString } from "../../../utils/utility";
-import { FeedContentListType } from "../../../types/types";
+import { FeedContentListType, FileInfo } from "../../../types/types";
 import { MAX_SIZE } from "../../../config/constant";
-
 
 interface DragEventWithDataTransfer extends React.DragEvent<HTMLDivElement> {
   dataTransfer: DataTransfer;
 }
 interface DragDropProps {
-  fileInfos: {id:number; file:File}[];
-  setFileInfos: React.Dispatch<SetStateAction<{id:number; file:File}[]>>;
+  fileInfos: FileInfo[];
+  setFileInfos: React.Dispatch<SetStateAction<{ id: number; file: File }[]>>;
 }
-const DragDrop = (props:DragDropProps) => {
+const DragDrop = (props: DragDropProps) => {
   const [active, setActive] = useState(false);
   const [plusMenu, setPlusMenu] = useState(false);
   const [id, setId] = useState(1);
-  const [file,setFile] = useState<File|undefined>();
-    const [imageUrls,setImageUrls] = useState<FeedContentListType[]>([]);
+  const [file, setFile] = useState<File | undefined>();
+  const [imageUrls, setImageUrls] = useState<FeedContentListType[]>([]);
   const handleDragStart = () => setActive(false);
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
     setActive(true);
@@ -41,17 +40,17 @@ const DragDrop = (props:DragDropProps) => {
   const handleDrop = (event: DragEventWithDataTransfer) => {
     event.preventDefault();
     setActive(false);
-    if(imageUrls.length<5){
-    const file = event.dataTransfer.files[0];
-    const type = file.type.split('/')[0];
-    if (type === 'image'){
-    setFile(file);
-    if(file.size<=MAX_SIZE){
-      props.setFileInfos((prev) => ([...prev,{id:id,file:file}]));
-    }
-  } else {
-    alert('이미지 파일만 올려주세요');
-  }
+    if (imageUrls.length < 5) {
+      const file = event.dataTransfer.files[0];
+      const type = file.type.split("/")[0];
+      if (type === "image") {
+        setFile(file);
+        if (file.size <= MAX_SIZE) {
+          props.setFileInfos((prev) => [...prev, { id: id, file: file }]);
+        }
+      } else {
+        alert("이미지 파일만 올려주세요");
+      }
     }
   };
   const handleFileInputChange = (
@@ -59,28 +58,18 @@ const DragDrop = (props:DragDropProps) => {
   ) => {
     const file = event.target.files && event.target.files[0];
     if (file) {
-      const type = file.type.split('/')[0];
-      if (type === 'image'){
-      setFile(file);
-      if(imageUrls.length<5 && file.size<=MAX_SIZE){
-        props.setFileInfos((prev) => ([...prev,{id:id,file:file}]));
+      const type = file.type.split("/")[0];
+      if (type === "image") {
+        setFile(file);
+        if (imageUrls.length < 5 && file.size <= MAX_SIZE) {
+          props.setFileInfos((prev) => [...prev, { id: id, file: file }]);
+        }
+      } else {
+        alert("이미지 파일만 올려주세요");
       }
-    }else {
-      alert('이미지 파일만 올려주세요');
-    }
     }
   };
   useEffect(() => {
-    // if (fileInfo) {
-    //   const storage = getStorage(app);
-    //   const storageRef = ref(storage,`images/${randomString(10)}`);
-    //   uploadBytes(storageRef, fileInfo).then((snapshot) => {
-    //     getDownloadURL(snapshot.ref).then((url) => {
-    //       const id = props.imageUrls.length > 0 ? props.imageUrls[props.imageUrls.length - 1].id + 1 : 1;
-    //         // 새로운 객체를 생성하여 기존 배열에 추가합니다.
-    //         props.setImageUrls((prev) => [...prev, { id, contentUrl: url }]);
-    //   });
-    //   });
     if (file) {
       let fileReader = new FileReader();
 
@@ -89,17 +78,13 @@ const DragDrop = (props:DragDropProps) => {
           id: id,
           contentUrl: fileReader.result as string,
         };
-        setImageUrls((prev) => [...prev, newImageUrlObject])
-        
-       
-      }
+        setImageUrls((prev) => [...prev, newImageUrlObject]);
+      };
       fileReader.readAsDataURL(file);
-      setId(id+1);
-    }  // }, [fileInfo]);
-  // console.log(fileInfo);
-    },[file]);
-    console.log(props.fileInfos);
-    console.log(imageUrls);
+      setId(id + 1);
+    }
+  }, [file]);
+
   return (
     <DropDown
       active={active}
@@ -126,8 +111,21 @@ const DragDrop = (props:DragDropProps) => {
       {imageUrls.length > 0 && (
         <DropdownBackground>
           <ContentSwiper buttonpos={20} contents={imageUrls}></ContentSwiper>
-          <PlusButton src={plusButton} onClick={()=>{setPlusMenu(!plusMenu)}}/>
-          {plusMenu && (<PlusMenu setPlusMenu={setPlusMenu} setImageUrls = {setImageUrls} handleFileInputChange={handleFileInputChange} setFileInfo={props.setFileInfos} contents={imageUrls}></PlusMenu>)}
+          <PlusButton
+            src={plusButton}
+            onClick={() => {
+              setPlusMenu(!plusMenu);
+            }}
+          />
+          {plusMenu && (
+            <PlusMenu
+              setPlusMenu={setPlusMenu}
+              setImageUrls={setImageUrls}
+              handleFileInputChange={handleFileInputChange}
+              setFileInfo={props.setFileInfos}
+              contents={imageUrls}
+            ></PlusMenu>
+          )}
         </DropdownBackground>
       )}
     </DropDown>

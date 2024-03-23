@@ -13,7 +13,7 @@ export const JoinButton = styled.div<{ able: boolean }>`
   text-align: center;
   color: #ffffff;
   ${(props) => (props.able ? "cursor: pointer;" : "")}
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,8 +21,8 @@ export const JoinButton = styled.div<{ able: boolean }>`
 `;
 
 export const GoBack = styled.div`
-  color: #2E90FA;
+  color: #2e90fa;
   ${TextMdSemibold};
 
-  cursor:pointer;
-`
+  cursor: pointer;
+`;

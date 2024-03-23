@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const Join = () => {
+
   const[userInfo, setUserInfo] = useState<userInfo>({
     "loginId": "",
     "password": "",

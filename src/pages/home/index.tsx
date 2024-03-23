@@ -17,7 +17,6 @@ const Home = () => {
   const navigate = useNavigate();
   useEffect(()=> {
     if(!jwt) {
-      alert('다시 로그인해주세요');
       navigate('/login');
     }
   },[]) 
