@@ -90,10 +90,11 @@ index.ts: request api, jwt & not jwt
 
 
 ###### recoil
+  - recoil 전역 상태들
 
-  ㄴ login: 유저 전역 state
+    ㄴ login: 유저 전역 state
 
-  ㄴ home: 유저 auth 제외 나머지 전역 state
+    ㄴ home: 유저 auth 제외 나머지 전역 state
 
 
 ###### types
