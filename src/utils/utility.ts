@@ -77,8 +77,8 @@ export const isValidPassword = (password:string) => {
 }
 
 export const truncateText = (text:string) => {
-  if (text.length > 10) {
-    return text.substring(0, 10) + '...';
+  if (text.length > 100) {
+    return text.substring(0, 100) + '...';
   } else {
     return text;
   }
