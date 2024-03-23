@@ -1,21 +1,13 @@
-import styled, { css } from "styled-components";
-export const Font = css`
-  font-family: SF Pro Display;
-  line-height: 24px;
-  letter-spacing: 0em;
-  font-size: 16px;
-`;
+import styled from "styled-components";
+import { TextMdBold, TextMdRegular } from "../../styles";
+
 export const Logo = styled.img`
   width: 217px;
   height: 80px;
   margin-top: 50px;
 `;
 export const ShareImage = styled.div`
-  //styleName: Text md/Bold;
-  font-family: SF Pro Display;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
+  ${TextMdBold};
   letter-spacing: 0em;
   text-align: left;
   color: #7f7f7f;
@@ -33,7 +25,7 @@ export const InputWrap = styled.div`
 export const Or = styled.div`
   width: 14px;
   height: 24px;
-  ${Font}
+ ${TextMdRegular};
   font-size:16px;
   color: #7f7f7f;
   display: flex;
@@ -43,7 +35,7 @@ export const Or = styled.div`
 export const KaKaoJoinMessage = styled.div`
   width: 100%;
   height: 24px;
-  ${Font}
+  font-family: SF Pro Display;
   font-size:18px;
   font-weight: 700;
   color: #191919;

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { supportDeviceSize } from "../../components/styles";
+import { TextMdMedium, TextMdSemibold, supportDeviceSize } from "../../components/styles";
 
 export const Font = css`
   font-family: SF Pro Display;
@@ -41,11 +41,10 @@ export const LoginBox = styled.div`
   width: calc(416px - 1.6px);
   height: calc(86px - 1.6px);
   border: 1px solid #cccccc;
-  ${Font}
+  ${TextMdSemibold}
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 600;
   background: #ffffff;
   color: #7f7f7f;
   gap: 4px;
@@ -55,9 +54,7 @@ export const LoginButton = styled.div`
   cursor: pointer;
 `;
 export const AppGuideMessage = styled.div`
-  //styleName: Text md/Medium;
-  ${Font}
-  font-weight: 500;
+  ${TextMdMedium};
   text-align: center;
   margin-top: 10px;
   color: #7f7f7f;
