@@ -33,6 +33,6 @@ export const Input = styled.input`
 export const Button = styled.div<{value:string}>`
   width: 28px;
   ${TextSmBold}
-  ${(props) => ((props.value.length<1)?'':'cursor:pointer')}
+  ${(props) => ((props.value.length<1)?'':'cursor:pointer;')}
   color:${(props) => ((props.value.length<1)?'#B2DDFF':'#2E90FA')};
 `
