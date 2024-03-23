@@ -1,6 +1,6 @@
 # 그릿지 테스트 2024-WEB
 
-## /src 구조
+## 폴더/파일 구조
 
 ###### apis
 ㄴ core
@@ -65,7 +65,17 @@ index.ts: request api, jwt & not jwt
 ###### hooks
 - react query mutation hook
 
-  ㄴ useAddBookmark(북마크 추가), useAddComment(댓글 작성), useAddFeed(피드 작성), useAddLike(좋아요), useDeleteFeed(피드 삭제), useModifyModal(피드 수정)
+  ㄴ useAddBookmark(북마크 추가)
+
+  ㄴ useAddComment(댓글 작성)
+
+  ㄴ useAddFeed(피드 작성) 
+
+  ㄴ useAddLike(좋아요)
+
+  ㄴ useDeleteFeed(피드 삭제)
+
+  ㄴ useModifyModal(피드 수정)
 
 - react query useQuery/useInfiniteQuery
 
@@ -97,8 +107,35 @@ index.ts: request api, jwt & not jwt
     ㄴ home: 유저 auth 제외 나머지 전역 state
 
 
+
+
 ###### types
 
 
 ###### utils
 - 전역으로 사용되는 utils method
+
+## Prerequisites
+***
+- npm = 8.19.2
+- node = v18.12.1
+
+## 설치법
+***
+```sh
+npm install -g eslint prettier
+
+npm install
+```
+
+## 로컬 실행법 / 배포 소스 빌드법
+***
+```sh
+npm run start # 로컬에서 실행
+ 
+npm run build-dev # dev 환경용 build 파일 생성
+
+npm run build-stage # stage 환경용 build 파일 생성 
+
+npm run build-prod # prod 환경용 build 파일 생성
+```
