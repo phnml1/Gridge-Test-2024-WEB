@@ -43,10 +43,15 @@ const DragDrop = (props:DragDropProps) => {
     setActive(false);
     if(imageUrls.length<5){
     const file = event.dataTransfer.files[0];
+    const type = file.type.split('/')[0];
+    if (type === 'image'){
     setFile(file);
     if(file.size<=MAX_SIZE){
       props.setFileInfos((prev) => ([...prev,{id:id,file:file}]));
     }
+  } else {
+    alert('이미지 파일만 올려주세요');
+  }
     }
   };
   const handleFileInputChange = (
@@ -54,10 +59,15 @@ const DragDrop = (props:DragDropProps) => {
   ) => {
     const file = event.target.files && event.target.files[0];
     if (file) {
+      const type = file.type.split('/')[0];
+      if (type === 'image'){
       setFile(file);
       if(imageUrls.length<5 && file.size<=MAX_SIZE){
         props.setFileInfos((prev) => ([...prev,{id:id,file:file}]));
       }
+    }else {
+      alert('이미지 파일만 올려주세요');
+    }
     }
   };
   useEffect(() => {
