@@ -68,9 +68,9 @@ export const removeJwt = () => {
   localStorage.removeItem(JWT_KEY);
   localStorage.removeItem(ID_KEY);
 }
-
+// 7자리로 했는데 오류나서 8자리로 합니다.
 export const isValidPassword = (password:string) => {
-  if(password.length>=7) {
+  if(password.length>=8) {
     return true;
   }
   return false;
@@ -85,7 +85,7 @@ export const truncateText = (text:string) => {
 }
 
 export const isCanLogin = (id:string,password:string) => {
-  if(id.length>=1 && password.length>=7) {
+  if(id.length>=1 && password.length>=8) {
     return true;
   }
   return false;
