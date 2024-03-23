@@ -41,6 +41,42 @@ export const Modal = styled.div<{step: string}>`
     width: 100%;
     overflow:auto;
   }
+  &::after { 
+    position: absolute;
+    z-index: -1;
+    height: calc(100% - 20px);
+    top: 10px;
+    right: -1px;
+    width: 5px;
+    background: #666;
+  }
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 6px;
+    display: block;
+    background: rgba(255, 255, 255, 0.4);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border-right: none;
+    border-left: none;
+  }
+  &::-webkit-scrollbar-track {
+    height: 80%;
+    background: transparent;
+    background-clip: content-box;
+  }
+  &::-webkit-scrollbar-track-piece:end {
+    background: transparent;
+    margin-bottom: 10px; 
+}
+
+&::-webkit-scrollbar-track-piece:start {
+    background: transparent;
+    margin-top: 10px;
+}
 `;
 export const ModalTitle = styled.div`
   width: 100%;
