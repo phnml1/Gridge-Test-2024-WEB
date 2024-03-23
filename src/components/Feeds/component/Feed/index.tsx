@@ -12,10 +12,12 @@ import { useRecoilState } from "recoil";
 import {modalState } from "../../../../recoil/home";
 import ContentSwiper from "../../../Swiper";
 import { useAddLike } from "../../../../hooks/useAddLike";
-import fillHeart from '../../../../assets/filled-heart.png'
+import fillHeart from '../../../../assets/filled-heart.png';
+import fillBookmark from '../../../../assets/filled-bookmark.png';
 import { useQuery } from "react-query";
 import request from "../../../../apis/core";
 import Comment from "../Comment";
+import { useAddBookmark } from "../../../../hooks/useAddBookmark";
 interface FeedProps {
   feed:FeedType
 }
@@ -31,8 +33,9 @@ const Feed = (props:FeedProps) => {
   const [moreText,setMoreText] = useState(false);
   const [,setModal] = useRecoilState<number>(modalState);
   const {addLike} = useAddLike();
+  const {addBookmark} = useAddBookmark();
   const { data:commentData } = useQuery(['comment', props.feed.id,props.feed.feedCommentCount], () => getComment(props.feed.id,props.feed.feedCommentCount),{enabled:props.feed.feedCommentCount>0});
-  useEffect(()=>{setMoreText(props.feed.feedText.length<=10)},[])
+  useEffect(()=>{setMoreText(props.feed.feedText.length<=100)},[])
  return (<Wrap>
   <ContentBackGround>
     {/*profile 이미지는 받아올 방법이없어서 기본이미지로대체 */}
@@ -54,9 +57,11 @@ const Feed = (props:FeedProps) => {
   ))}
 
       </Indexes>
-      <BookMark src={bookmark}>
+      {(props.feed.isBookMarked)?(<BookMark src={fillBookmark} onClick = {() => addBookmark(props.feed.id)}>
 
-      </BookMark>
+</BookMark>):(<BookMark src={bookmark} onClick = {() => addBookmark(props.feed.id)}>
+
+      </BookMark>)}
     </Icons>
       <Content>
         <BoldContent>좋아요 104개{/*좋아요 받아오는거 없음 */}</BoldContent>

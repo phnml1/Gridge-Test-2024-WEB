@@ -96,11 +96,13 @@ export const Icons = styled.div`
 export const Icon = styled.img`
   width: 24px;
   height: 24px;
+  cursor:pointer;
 `;
 export const BookMark = styled.img`
   width: 24px;
   height: 24px;
   margin-top:1px;
+  cursor:pointer;
 `;
 export const Indexes = styled.div`
   display:flex;
