@@ -125,6 +125,7 @@ export const ModalContent = styled.div`
 export const More = styled.img`
   width:24px;
   height: 24px;
+  cursor:pointer;
 `;
 export const ContentProFileName = styled.div`
   ${TextMdSemibold}

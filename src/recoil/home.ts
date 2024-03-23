@@ -7,6 +7,7 @@ const homeState = atom ({
     feeds: [],
     modal: -1,
     writeModal: false,
+    modifyModal: -1,
   },
 })
 export const dropdownState = selector({
@@ -30,3 +31,8 @@ export const writeModalState = selector({
   get: ({ get }) => get(homeState).writeModal,
   set: ({ get, set }, writeModal) => set(homeState, { ...get(homeState), writeModal }),
 });
+export const modifyModalState = selector({
+  key: 'modifyModalState',
+  get: ({get}) => get(homeState).modifyModal,
+  set: ({ get, set }, modifyModal) => set(homeState, { ...get(homeState), modifyModal }),
+})

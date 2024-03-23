@@ -49,7 +49,6 @@ export const Item = styled.div`
 export const ItemDelete = styled.div`
   width: 100%;
   height: calc(100% / 9);
-  border-top: 1px solid #CCCCCC;
   ${TextSmSemiBold};
   color: #F04438;
   justify-content: center;

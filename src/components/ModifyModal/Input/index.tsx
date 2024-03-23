@@ -5,11 +5,12 @@ import mapPin from '../../../assets/map-pin.png';
 import down from '../../../assets/chevron-down.png';
 import { ID_KEY } from "../../../config/constant";
 interface InputProps {
+  feedText: string;
   setFeedText: React.Dispatch<SetStateAction<string>>
 }
 const Input = (props:InputProps) => {
   const id = localStorage.getItem(ID_KEY);
-  const [textValue, setTextValue] = useState("");
+  const [textValue, setTextValue] = useState(props.feedText);
   const maxLength = 2200;
   const handleSetValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTextValue(e.target.value);
